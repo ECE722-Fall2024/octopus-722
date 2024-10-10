@@ -192,13 +192,7 @@ void MCoreSimProject::setup2(MCoreSimProjectXml projectXmlCfg, bool use_mcsim)
   list<CacheXml> xmlPrivateCaches = projectXmlCfg.GetL1Caches();
   list<CacheXml> xmlSharedCaches = projectXmlCfg.GetSharedCache();
 
-  vector <int> xmlSharedCacheIDs;
-  // iterate over each LLC xml 
-  for (list<CacheXml>::iterator it = xmlSharedCaches.begin(); it != xmlSharedCaches.end(); it++)
-  {
-    CacheXml SharedCacheXml = *it;
-    xmlSharedCacheIDs.push_back (it->GetCacheId());
-  }
+  
 
 
   
@@ -218,12 +212,9 @@ void MCoreSimProject::setup2(MCoreSimProjectXml projectXmlCfg, bool use_mcsim)
 
   /* Interconnects Setup*/
   // L1s <--> LLC
-  bus = new TripleBus(xmlPrivateCaches, xmlSharedCaches, 
-    projectXmlCfg.GetBusFIFOSize(), L1BusCnfg.GetReqBusLatcy(), L1BusCnfg.GetRespBusLatcy());
-
+  
   // LLC <--> DRAM
-  bus2 = new Bus(xmlSharedCaches, projectXmlCfg.GetDRAMId(), projectXmlCfg.GetBusFIFOSize(), bus->getLowerLevelIds());
-
+ 
   /* CPUs and L1s Setup*/
   for (list<CacheXml>::iterator it = xmlPrivateCaches.begin(); it != xmlPrivateCaches.end(); it++)
   {
@@ -258,8 +249,7 @@ void MCoreSimProject::setup2(MCoreSimProjectXml projectXmlCfg, bool use_mcsim)
     bm_paths.push_back(bmTraceFile.str());
 
     // L1s Interface towards LLC Interconnect
-    CommunicationInterface* bus_interface = bus->getInterfaceFor(PrivateCacheXml.GetCacheId());
-
+    
     /*
      * instantiate cache controllers
      */
@@ -288,15 +278,11 @@ void MCoreSimProject::setup2(MCoreSimProjectXml projectXmlCfg, bool use_mcsim)
   {
 
     // LLC Interface towards L1s Interconnect
-    CommunicationInterface* LLC_bus_interface = bus->getInterfaceFor(it->GetCacheId());
-
+    
     // LLC Interface towards DRAM Bus
-    CommunicationInterface* LLC_DRAM_interface = bus2->getInterfaceFor(it->GetCacheId());
+    
     // LLC Controller
-    CacheController *newCacheCtrl;
-    newCacheCtrl = new CacheController_End2End(*it, m_fsm_llc_protocol_path, LLC_DRAM_interface, LLC_bus_interface,
-                                          projectXmlCfg.GetCache2Cache(), projectXmlCfg.GetDRAMId(), m_llcCohrProt, bus->getLowerLevelIds());
-    m_SharedCacheCtrl.push_back(newCacheCtrl);
+   
   }
 
 
@@ -354,36 +340,25 @@ void MCoreSimProject::setup4(MCoreSimProjectXml projectXmlCfg)
   // GetCohrProtocolType();
 
   // Interconnect between L2s and LLC
-  bus = new TripleBus(xmlL2Caches, xmlSharedCaches, projectXmlCfg.GetBusFIFOSize());
-
+ 
   // Bus between LLC and DRAM
-  bus2 = new Bus(xmlSharedCaches, projectXmlCfg.GetDRAMId(), projectXmlCfg.GetBusFIFOSize(), bus->getLowerLevelIds());
-
+  
 
   // DRAM interface towards LLC
-  CommunicationInterface* DRAM_LLC_interface = bus2->getInterfaceFor(projectXmlCfg.GetDRAMId());
-
+  
   // Fixed Latency DRAM Controller
-  m_main_memory = new MainMemoryController(projectXmlCfg, DRAM_LLC_interface, xmlSharedCacheIDs)
-
+ 
  /* LLC Setup */
   // iterate over each LLC
   for (list<CacheXml>::iterator it = xmlSharedCaches.begin(); it != xmlSharedCaches.end(); it++)
   {
 
     // LLC Interface towards L1s Interconnect
-    CommunicationInterface* LLC_bus_interface = bus->getInterfaceFor(it->GetCacheId());
-
+    
     // LLC Interface towards DRAM Bus
     CommunicationInterface* LLC_DRAM_interface = bus2->getInterfaceFor(it->GetCacheId());
     // LLC Controller
-    CacheController *newCacheCtrl;
     
-
-
-    newCacheCtrl = new CacheController_End2End(*it, m_fsm_llc_protocol_path, LLC_DRAM_interface, LLC_bus_interface,
-                                          projectXmlCfg.GetCache2Cache(), projectXmlCfg.GetDRAMId(), CohProtType::SNOOP_LLC_MSI, bus->getLowerLevelIds());
-    m_SharedCacheCtrl.push_back(newCacheCtrl);
   }
 
  
@@ -429,31 +404,8 @@ void MCoreSimProject::setup4(MCoreSimProjectXml projectXmlCfg)
     
 
    
-    // Interconnect L1 <--> L2 (both are private so it is a one to one connection)
-    DirectInterconnect *l1_interconnect = new DirectInterconnect(L1->GetCacheId(), L2->GetCacheId(), projectXmlCfg.GetCpuFIFOSize());
     
-    CacheController*  L1_cache = new CacheController(*L1, l1_fsm, l1_interconnect->getInterfaceFor(L1->GetCacheId()), 
-                                                    newCpuFIFO,
-                                                    projectXmlCfg.GetCache2Cache(), L2->GetCacheId(), CohProtType::L1_MSI);
 
-    CommunicationInterface* bus_interface = bus->getInterfaceFor(L2->GetCacheId());
-    CacheController* L2_cache;
-
-
-    L2_cache = new CacheController(*L2, l2_fsm, bus_interface, 
-                                   l1_interconnect->getInterfaceFor(L2->GetCacheId()),
-                                   projectXmlCfg.GetCache2Cache(), xmlSharedCacheIDs, CohProtType::L2_MSI);
-
-    m_cpuCacheCtrl.push_back(L2_cache);
-    L2_cache->m_children_controllers.push_back(L1_cache);
-
-    for (list<CacheController*>::iterator it = m_SharedCacheCtrl.begin(); it != m_SharedCacheCtrl.end(); it++)
-    {
-      (*it)->m_children_controllers.push_back(L2_cache);
-    }
-
-    l1_interconnect->init();
-  }
 
   Logger::getLogger()->registerReportPath(projectXmlCfg.GetBMsPath() + string("/newLogger"));   
   // if (L1BusCnfg.GetReqBusArb() == "RR" ||
