@@ -1,0 +1,743 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - filted3.info - src/core/model/type-id.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">src/core/model</a> - type-id.h<span style="font-size: 80%;"> (source / <a href="type-id.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">filted3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">17</td>
+            <td class="headerCovTableEntry">24</td>
+            <td class="headerCovTableEntryLo">70.8 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2021-03-27 06:55:54</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">31</td>
+            <td class="headerCovTableEntry">54</td>
+            <td class="headerCovTableEntryLo">57.4 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /* -*- Mode:C++; c-file-style:&quot;gnu&quot;; indent-tabs-mode:nil; -*- */</a>
+<a name="2"><span class="lineNum">       2 </span>            : /*</a>
+<a name="3"><span class="lineNum">       3 </span>            :  * Copyright (c) 2008 INRIA</a>
+<a name="4"><span class="lineNum">       4 </span>            :  *</a>
+<a name="5"><span class="lineNum">       5 </span>            :  * This program is free software; you can redistribute it and/or modify</a>
+<a name="6"><span class="lineNum">       6 </span>            :  * it under the terms of the GNU General Public License version 2 as</a>
+<a name="7"><span class="lineNum">       7 </span>            :  * published by the Free Software Foundation;</a>
+<a name="8"><span class="lineNum">       8 </span>            :  *</a>
+<a name="9"><span class="lineNum">       9 </span>            :  * This program is distributed in the hope that it will be useful,</a>
+<a name="10"><span class="lineNum">      10 </span>            :  * but WITHOUT ANY WARRANTY; without even the implied warranty of</a>
+<a name="11"><span class="lineNum">      11 </span>            :  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</a>
+<a name="12"><span class="lineNum">      12 </span>            :  * GNU General Public License for more details.</a>
+<a name="13"><span class="lineNum">      13 </span>            :  *</a>
+<a name="14"><span class="lineNum">      14 </span>            :  * You should have received a copy of the GNU General Public License</a>
+<a name="15"><span class="lineNum">      15 </span>            :  * along with this program; if not, write to the Free Software</a>
+<a name="16"><span class="lineNum">      16 </span>            :  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</a>
+<a name="17"><span class="lineNum">      17 </span>            :  *</a>
+<a name="18"><span class="lineNum">      18 </span>            :  * Author: Mathieu Lacage &lt;mathieu.lacage@sophia.inria.fr&gt;</a>
+<a name="19"><span class="lineNum">      19 </span>            :  */</a>
+<a name="20"><span class="lineNum">      20 </span>            : #ifndef TYPE_ID_H</a>
+<a name="21"><span class="lineNum">      21 </span>            : #define TYPE_ID_H</a>
+<a name="22"><span class="lineNum">      22 </span>            : </a>
+<a name="23"><span class="lineNum">      23 </span>            : #include &quot;attribute.h&quot;</a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &quot;attribute-accessor-helper.h&quot;</a>
+<a name="25"><span class="lineNum">      25 </span>            : #include &quot;trace-source-accessor.h&quot;</a>
+<a name="26"><span class="lineNum">      26 </span>            : #include &quot;attribute-helper.h&quot;</a>
+<a name="27"><span class="lineNum">      27 </span>            : #include &quot;callback.h&quot;</a>
+<a name="28"><span class="lineNum">      28 </span>            : #include &quot;deprecated.h&quot;</a>
+<a name="29"><span class="lineNum">      29 </span>            : #include &quot;hash.h&quot;</a>
+<a name="30"><span class="lineNum">      30 </span>            : #include &lt;string&gt;</a>
+<a name="31"><span class="lineNum">      31 </span>            : #include &lt;stdint.h&gt;</a>
+<a name="32"><span class="lineNum">      32 </span>            : </a>
+<a name="33"><span class="lineNum">      33 </span>            : /**</a>
+<a name="34"><span class="lineNum">      34 </span>            :  * \file</a>
+<a name="35"><span class="lineNum">      35 </span>            :  * \ingroup object</a>
+<a name="36"><span class="lineNum">      36 </span>            :  * ns3::TypeId declaration; inline and template implementations.</a>
+<a name="37"><span class="lineNum">      37 </span>            :  */</a>
+<a name="38"><span class="lineNum">      38 </span>            : </a>
+<a name="39"><span class="lineNum">      39 </span>            : namespace ns3 {</a>
+<a name="40"><span class="lineNum">      40 </span>            : </a>
+<a name="41"><span class="lineNum">      41 </span>            : class ObjectBase;</a>
+<a name="42"><span class="lineNum">      42 </span>            : </a>
+<a name="43"><span class="lineNum">      43 </span>            : /**</a>
+<a name="44"><span class="lineNum">      44 </span>            :  * \ingroup object</a>
+<a name="45"><span class="lineNum">      45 </span>            :  * \brief a unique identifier for an interface.</a>
+<a name="46"><span class="lineNum">      46 </span>            :  *</a>
+<a name="47"><span class="lineNum">      47 </span>            :  * This class records a lot of meta-information about a </a>
+<a name="48"><span class="lineNum">      48 </span>            :  * subclass of the Object base class:</a>
+<a name="49"><span class="lineNum">      49 </span>            :  *  - the base class of the subclass</a>
+<a name="50"><span class="lineNum">      50 </span>            :  *  - the set of accessible constructors in the subclass</a>
+<a name="51"><span class="lineNum">      51 </span>            :  *  - the set of 'attributes' accessible in the subclass</a>
+<a name="52"><span class="lineNum">      52 </span>            :  *</a>
+<a name="53"><span class="lineNum">      53 </span>            :  * \see attribute_TypeId</a>
+<a name="54"><span class="lineNum">      54 </span>            :  *</a>
+<a name="55"><span class="lineNum">      55 </span>            :  * \internal</a>
+<a name="56"><span class="lineNum">      56 </span>            :  *  See the discussion in IidManager about hash chaining of TypeId's.</a>
+<a name="57"><span class="lineNum">      57 </span>            :  */</a>
+<a name="58"><span class="lineNum">      58 </span>            : class TypeId</a>
+<a name="59"><span class="lineNum">      59 </span>            : {</a>
+<a name="60"><span class="lineNum">      60 </span>            : public:</a>
+<a name="61"><span class="lineNum">      61 </span>            :   /** Flags describing when a given attribute can be read or written. */</a>
+<a name="62"><span class="lineNum">      62 </span>            :   enum AttributeFlag {</a>
+<a name="63"><span class="lineNum">      63 </span>            :     ATTR_GET = 1&lt;&lt;0, /**&lt; The attribute can be read */</a>
+<a name="64"><span class="lineNum">      64 </span>            :     ATTR_SET = 1&lt;&lt;1, /**&lt; The attribute can be written */</a>
+<a name="65"><span class="lineNum">      65 </span>            :     ATTR_CONSTRUCT = 1&lt;&lt;2, /**&lt; The attribute can be written at construction-time */</a>
+<a name="66"><span class="lineNum">      66 </span>            :     ATTR_SGC = ATTR_GET | ATTR_SET | ATTR_CONSTRUCT, /**&lt; The attribute can be read, and written at any time */</a>
+<a name="67"><span class="lineNum">      67 </span>            :   };</a>
+<a name="68"><span class="lineNum">      68 </span>            :   /** The level of support or deprecation for attributes or trace sources. */</a>
+<a name="69"><span class="lineNum">      69 </span>            :   enum SupportLevel</a>
+<a name="70"><span class="lineNum">      70 </span>            :   {</a>
+<a name="71"><span class="lineNum">      71 </span>            :     SUPPORTED,   /**&lt; Attribute or trace source is currently used. */</a>
+<a name="72"><span class="lineNum">      72 </span>            :     DEPRECATED,  /**&lt; Attribute or trace source is deprecated; user is warned. */</a>
+<a name="73"><span class="lineNum">      73 </span>            :     OBSOLETE     /**&lt; Attribute or trace source is not used anymore; simulation fails. */</a>
+<a name="74"><span class="lineNum">      74 </span>            :   };</a>
+<a name="75"><span class="lineNum">      75 </span>            :   /** Attribute implementation. */</a>
+<a name="76"><span class="lineNum">      76 </span>            :   struct AttributeInformation {</a>
+<a name="77"><span class="lineNum">      77 </span>            :     /** Attribute name. */</a>
+<a name="78"><span class="lineNum">      78 </span>            :     std::string name;</a>
+<a name="79"><span class="lineNum">      79 </span>            :     /** Attribute help string. */</a>
+<a name="80"><span class="lineNum">      80 </span>            :     std::string help;</a>
+<a name="81"><span class="lineNum">      81 </span>            :     /** AttributeFlags value. */</a>
+<a name="82"><span class="lineNum">      82 </span>            :     uint32_t flags;</a>
+<a name="83"><span class="lineNum">      83 </span>            :     /** Default initial value. */</a>
+<a name="84"><span class="lineNum">      84 </span>            :     Ptr&lt;const AttributeValue&gt; originalInitialValue;</a>
+<a name="85"><span class="lineNum">      85 </span>            :     /** Configured initial value. */</a>
+<a name="86"><span class="lineNum">      86 </span>            :     Ptr&lt;const AttributeValue&gt; initialValue;</a>
+<a name="87"><span class="lineNum">      87 </span>            :     /** Accessor object. */</a>
+<a name="88"><span class="lineNum">      88 </span>            :     Ptr&lt;const AttributeAccessor&gt; accessor;</a>
+<a name="89"><span class="lineNum">      89 </span>            :     /** Checker object. */</a>
+<a name="90"><span class="lineNum">      90 </span>            :     Ptr&lt;const AttributeChecker&gt; checker;</a>
+<a name="91"><span class="lineNum">      91 </span>            :     /** Support level/deprecation. */</a>
+<a name="92"><span class="lineNum">      92 </span>            :     TypeId::SupportLevel supportLevel;</a>
+<a name="93"><span class="lineNum">      93 </span>            :     /** Support message. */</a>
+<a name="94"><span class="lineNum">      94 </span>            :     std::string supportMsg;</a>
+<a name="95"><span class="lineNum">      95 </span>            :   };</a>
+<a name="96"><span class="lineNum">      96 </span>            :   /** TraceSource implementation. */</a>
+<a name="97"><span class="lineNum">      97 </span>            :   struct TraceSourceInformation {</a>
+<a name="98"><span class="lineNum">      98 </span>            :     /** Trace name. */</a>
+<a name="99"><span class="lineNum">      99 </span>            :     std::string name;</a>
+<a name="100"><span class="lineNum">     100 </span>            :     /** Trace help string. */</a>
+<a name="101"><span class="lineNum">     101 </span>            :     std::string help;</a>
+<a name="102"><span class="lineNum">     102 </span>            :     /** Callback function signature type. */</a>
+<a name="103"><span class="lineNum">     103 </span>            :     std::string callback;</a>
+<a name="104"><span class="lineNum">     104 </span>            :     /** Trace accessor. */</a>
+<a name="105"><span class="lineNum">     105 </span>            :     Ptr&lt;const TraceSourceAccessor&gt; accessor;</a>
+<a name="106"><span class="lineNum">     106 </span>            :     /** Support level/deprecation. */</a>
+<a name="107"><span class="lineNum">     107 </span>            :     TypeId::SupportLevel supportLevel;</a>
+<a name="108"><span class="lineNum">     108 </span>            :     /** Support message. */</a>
+<a name="109"><span class="lineNum">     109 </span>            :     std::string supportMsg;</a>
+<a name="110"><span class="lineNum">     110 </span>            :   };</a>
+<a name="111"><span class="lineNum">     111 </span>            : </a>
+<a name="112"><span class="lineNum">     112 </span>            :   /** Type of hash values. */</a>
+<a name="113"><span class="lineNum">     113 </span>            :   typedef uint32_t hash_t;</a>
+<a name="114"><span class="lineNum">     114 </span>            : </a>
+<a name="115"><span class="lineNum">     115 </span>            :   /**</a>
+<a name="116"><span class="lineNum">     116 </span>            :    * Get a TypeId by name.</a>
+<a name="117"><span class="lineNum">     117 </span>            :    *</a>
+<a name="118"><span class="lineNum">     118 </span>            :    * \param [in] name The name of the requested TypeId</a>
+<a name="119"><span class="lineNum">     119 </span>            :    * \returns The unique id associated with the requested name. </a>
+<a name="120"><span class="lineNum">     120 </span>            :    *</a>
+<a name="121"><span class="lineNum">     121 </span>            :    * This method cannot fail: it will crash if the input </a>
+<a name="122"><span class="lineNum">     122 </span>            :    * name is not a valid TypeId name.</a>
+<a name="123"><span class="lineNum">     123 </span>            :    */</a>
+<a name="124"><span class="lineNum">     124 </span>            :   static TypeId LookupByName (std::string name);</a>
+<a name="125"><span class="lineNum">     125 </span>            :   /**</a>
+<a name="126"><span class="lineNum">     126 </span>            :    * Get a TypeId by name.</a>
+<a name="127"><span class="lineNum">     127 </span>            :    * </a>
+<a name="128"><span class="lineNum">     128 </span>            :    * \param [in]  name The name of the requested TypeId</a>
+<a name="129"><span class="lineNum">     129 </span>            :    * \param [out] tid A pointer to the TypeId instance where the </a>
+<a name="130"><span class="lineNum">     130 </span>            :    *              result of this function should be stored.</a>
+<a name="131"><span class="lineNum">     131 </span>            :    * \returns \c true if the requested name was found.</a>
+<a name="132"><span class="lineNum">     132 </span>            :    */</a>
+<a name="133"><span class="lineNum">     133 </span>            :   static bool LookupByNameFailSafe (std::string name, TypeId *tid);</a>
+<a name="134"><span class="lineNum">     134 </span>            :   /**</a>
+<a name="135"><span class="lineNum">     135 </span>            :    * Get a TypeId by hash.</a>
+<a name="136"><span class="lineNum">     136 </span>            :    *</a>
+<a name="137"><span class="lineNum">     137 </span>            :    * \param [in] hash The hash to lookup</a>
+<a name="138"><span class="lineNum">     138 </span>            :    * \returns The unique id associated with the requested hash.</a>
+<a name="139"><span class="lineNum">     139 </span>            :    *</a>
+<a name="140"><span class="lineNum">     140 </span>            :    * This method cannot fail: it will crash if the input </a>
+<a name="141"><span class="lineNum">     141 </span>            :    * hash does not match an existing TypeId.</a>
+<a name="142"><span class="lineNum">     142 </span>            :    */</a>
+<a name="143"><span class="lineNum">     143 </span>            :   static TypeId LookupByHash (hash_t hash);</a>
+<a name="144"><span class="lineNum">     144 </span>            :   /**</a>
+<a name="145"><span class="lineNum">     145 </span>            :    * Get a TypeId by hash.</a>
+<a name="146"><span class="lineNum">     146 </span>            :    *</a>
+<a name="147"><span class="lineNum">     147 </span>            :    * \param [in]  hash The hash of the requested TypeId</a>
+<a name="148"><span class="lineNum">     148 </span>            :    * \param [out] tid A pointer to the TypeId instance where the </a>
+<a name="149"><span class="lineNum">     149 </span>            :    *              result of this function should be stored.</a>
+<a name="150"><span class="lineNum">     150 </span>            :    * \returns \c true if the requested hash was found.</a>
+<a name="151"><span class="lineNum">     151 </span>            :    */</a>
+<a name="152"><span class="lineNum">     152 </span>            :   static bool LookupByHashFailSafe (hash_t hash, TypeId *tid);</a>
+<a name="153"><span class="lineNum">     153 </span>            : </a>
+<a name="154"><span class="lineNum">     154 </span>            :   /**</a>
+<a name="155"><span class="lineNum">     155 </span>            :    * Get the number of registered TypeIds.</a>
+<a name="156"><span class="lineNum">     156 </span>            :    *</a>
+<a name="157"><span class="lineNum">     157 </span>            :    * \returns The number of TypeId instances registered.</a>
+<a name="158"><span class="lineNum">     158 </span>            :    */</a>
+<a name="159"><span class="lineNum">     159 </span>            :   static uint16_t GetRegisteredN (void);</a>
+<a name="160"><span class="lineNum">     160 </span>            :   /**</a>
+<a name="161"><span class="lineNum">     161 </span>            :    * Get a TypeId by index.</a>
+<a name="162"><span class="lineNum">     162 </span>            :    *</a>
+<a name="163"><span class="lineNum">     163 </span>            :    * \param [in] i Index of the TypeId.</a>
+<a name="164"><span class="lineNum">     164 </span>            :    * \returns The TypeId instance whose index is \c i.</a>
+<a name="165"><span class="lineNum">     165 </span>            :    */</a>
+<a name="166"><span class="lineNum">     166 </span>            :   static TypeId GetRegistered (uint16_t i);</a>
+<a name="167"><span class="lineNum">     167 </span>            : </a>
+<a name="168"><span class="lineNum">     168 </span>            :   /**</a>
+<a name="169"><span class="lineNum">     169 </span>            :    * Constructor.</a>
+<a name="170"><span class="lineNum">     170 </span>            :    *</a>
+<a name="171"><span class="lineNum">     171 </span>            :    * \param [in] name The name of the interface to construct.</a>
+<a name="172"><span class="lineNum">     172 </span>            :    *</a>
+<a name="173"><span class="lineNum">     173 </span>            :    * No two instances can share the same name. The name is expected to be</a>
+<a name="174"><span class="lineNum">     174 </span>            :    * the full c++ typename of associated c++ object.</a>
+<a name="175"><span class="lineNum">     175 </span>            :    */</a>
+<a name="176"><span class="lineNum">     176 </span>            :   explicit TypeId (const char * name);</a>
+<a name="177"><span class="lineNum">     177 </span>            : </a>
+<a name="178"><span class="lineNum">     178 </span>            :   /**</a>
+<a name="179"><span class="lineNum">     179 </span>            :    * Get the parent of this TypeId.</a>
+<a name="180"><span class="lineNum">     180 </span>            :    *</a>
+<a name="181"><span class="lineNum">     181 </span>            :    * \returns The parent of this TypeId</a>
+<a name="182"><span class="lineNum">     182 </span>            :    *</a>
+<a name="183"><span class="lineNum">     183 </span>            :    * This method cannot fail. It will return itself</a>
+<a name="184"><span class="lineNum">     184 </span>            :    * if this TypeId has no parent. i.e., it is at the top</a>
+<a name="185"><span class="lineNum">     185 </span>            :    * of the TypeId hierarchy. Currently, this is the</a>
+<a name="186"><span class="lineNum">     186 </span>            :    * case for the TypeId associated to the ns3::ObjectBase class </a>
+<a name="187"><span class="lineNum">     187 </span>            :    * only.</a>
+<a name="188"><span class="lineNum">     188 </span>            :    */</a>
+<a name="189"><span class="lineNum">     189 </span>            :   TypeId GetParent (void) const;</a>
+<a name="190"><span class="lineNum">     190 </span>            :   </a>
+<a name="191"><span class="lineNum">     191 </span>            :   /**</a>
+<a name="192"><span class="lineNum">     192 </span>            :    * Check if this TypeId has a parent.</a>
+<a name="193"><span class="lineNum">     193 </span>            :    *</a>
+<a name="194"><span class="lineNum">     194 </span>            :    * \return \c true if this TypeId has a parent.</a>
+<a name="195"><span class="lineNum">     195 </span>            :    */</a>
+<a name="196"><span class="lineNum">     196 </span>            :   bool HasParent (void) const;</a>
+<a name="197"><span class="lineNum">     197 </span>            : </a>
+<a name="198"><span class="lineNum">     198 </span>            :   /**</a>
+<a name="199"><span class="lineNum">     199 </span>            :    * Check if this TypeId is a child of another.</a>
+<a name="200"><span class="lineNum">     200 </span>            :    *</a>
+<a name="201"><span class="lineNum">     201 </span>            :    * \param [in] other A parent TypeId</a>
+<a name="202"><span class="lineNum">     202 </span>            :    * \returns \c true if the input TypeId is really a parent of this TypeId.</a>
+<a name="203"><span class="lineNum">     203 </span>            :    *</a>
+<a name="204"><span class="lineNum">     204 </span>            :    * Calling this method is roughly similar to calling dynamic_cast</a>
+<a name="205"><span class="lineNum">     205 </span>            :    * except that you do not need object instances: you can do the check</a>
+<a name="206"><span class="lineNum">     206 </span>            :    * with TypeId instances instead.</a>
+<a name="207"><span class="lineNum">     207 </span>            :    */</a>
+<a name="208"><span class="lineNum">     208 </span>            :   bool IsChildOf (TypeId other) const;</a>
+<a name="209"><span class="lineNum">     209 </span>            : </a>
+<a name="210"><span class="lineNum">     210 </span>            :   /**</a>
+<a name="211"><span class="lineNum">     211 </span>            :    * Get the group name.</a>
+<a name="212"><span class="lineNum">     212 </span>            :    *</a>
+<a name="213"><span class="lineNum">     213 </span>            :    * \returns The name of the group associated to this TypeId.</a>
+<a name="214"><span class="lineNum">     214 </span>            :    */</a>
+<a name="215"><span class="lineNum">     215 </span>            :   std::string GetGroupName (void) const;</a>
+<a name="216"><span class="lineNum">     216 </span>            : </a>
+<a name="217"><span class="lineNum">     217 </span>            :   /**</a>
+<a name="218"><span class="lineNum">     218 </span>            :    * Get the name.</a>
+<a name="219"><span class="lineNum">     219 </span>            :    *</a>
+<a name="220"><span class="lineNum">     220 </span>            :    * \returns The name of this interface.</a>
+<a name="221"><span class="lineNum">     221 </span>            :    */</a>
+<a name="222"><span class="lineNum">     222 </span>            :   std::string GetName (void) const;</a>
+<a name="223"><span class="lineNum">     223 </span>            : </a>
+<a name="224"><span class="lineNum">     224 </span>            :   /**</a>
+<a name="225"><span class="lineNum">     225 </span>            :    * Get the hash.</a>
+<a name="226"><span class="lineNum">     226 </span>            :    *</a>
+<a name="227"><span class="lineNum">     227 </span>            :    * \returns The hash of this interface.</a>
+<a name="228"><span class="lineNum">     228 </span>            :    */</a>
+<a name="229"><span class="lineNum">     229 </span>            :   hash_t GetHash (void) const;</a>
+<a name="230"><span class="lineNum">     230 </span>            : </a>
+<a name="231"><span class="lineNum">     231 </span>            :   /**</a>
+<a name="232"><span class="lineNum">     232 </span>            :    * Get the size of this object.</a>
+<a name="233"><span class="lineNum">     233 </span>            :    *</a>
+<a name="234"><span class="lineNum">     234 </span>            :    * \returns The size of this interface.</a>
+<a name="235"><span class="lineNum">     235 </span>            :    */</a>
+<a name="236"><span class="lineNum">     236 </span>            :   std::size_t GetSize (void) const;</a>
+<a name="237"><span class="lineNum">     237 </span>            : </a>
+<a name="238"><span class="lineNum">     238 </span>            :   /**</a>
+<a name="239"><span class="lineNum">     239 </span>            :    * Check if this TypeId has a constructor.</a>
+<a name="240"><span class="lineNum">     240 </span>            :    *</a>
+<a name="241"><span class="lineNum">     241 </span>            :    * \returns \c true if this TypeId has a constructor</a>
+<a name="242"><span class="lineNum">     242 </span>            :    */</a>
+<a name="243"><span class="lineNum">     243 </span>            :   bool HasConstructor (void) const;</a>
+<a name="244"><span class="lineNum">     244 </span>            : </a>
+<a name="245"><span class="lineNum">     245 </span>            :   /**</a>
+<a name="246"><span class="lineNum">     246 </span>            :    * Get the number of attributes.</a>
+<a name="247"><span class="lineNum">     247 </span>            :    *</a>
+<a name="248"><span class="lineNum">     248 </span>            :    * \returns The number of attributes associated to this TypeId</a>
+<a name="249"><span class="lineNum">     249 </span>            :    */</a>
+<a name="250"><span class="lineNum">     250 </span>            :   std::size_t GetAttributeN (void) const;</a>
+<a name="251"><span class="lineNum">     251 </span>            :   /**</a>
+<a name="252"><span class="lineNum">     252 </span>            :    * Get Attribute information by index.</a>
+<a name="253"><span class="lineNum">     253 </span>            :    *</a>
+<a name="254"><span class="lineNum">     254 </span>            :    * \param [in] i Index into attribute array</a>
+<a name="255"><span class="lineNum">     255 </span>            :    * \returns The information associated to attribute whose index is \p i.</a>
+<a name="256"><span class="lineNum">     256 </span>            :    */</a>
+<a name="257"><span class="lineNum">     257 </span>            :   struct TypeId::AttributeInformation GetAttribute (std::size_t i) const;</a>
+<a name="258"><span class="lineNum">     258 </span>            :   /**</a>
+<a name="259"><span class="lineNum">     259 </span>            :    * Get the Attribute name by index.</a>
+<a name="260"><span class="lineNum">     260 </span>            :    *</a>
+<a name="261"><span class="lineNum">     261 </span>            :    * \param [in] i Index into attribute array</a>
+<a name="262"><span class="lineNum">     262 </span>            :    * \returns The full name associated to the attribute whose index is \p i.</a>
+<a name="263"><span class="lineNum">     263 </span>            :    */</a>
+<a name="264"><span class="lineNum">     264 </span>            :   std::string GetAttributeFullName (std::size_t i) const;</a>
+<a name="265"><span class="lineNum">     265 </span>            : </a>
+<a name="266"><span class="lineNum">     266 </span>            :   /**</a>
+<a name="267"><span class="lineNum">     267 </span>            :    * Get the constructor callback.</a>
+<a name="268"><span class="lineNum">     268 </span>            :    *</a>
+<a name="269"><span class="lineNum">     269 </span>            :    * \returns A callback which can be used to instantiate an object</a>
+<a name="270"><span class="lineNum">     270 </span>            :    *          of this type.</a>
+<a name="271"><span class="lineNum">     271 </span>            :    */</a>
+<a name="272"><span class="lineNum">     272 </span>            :   Callback&lt;ObjectBase *&gt; GetConstructor (void) const;</a>
+<a name="273"><span class="lineNum">     273 </span>            : </a>
+<a name="274"><span class="lineNum">     274 </span>            :   /**</a>
+<a name="275"><span class="lineNum">     275 </span>            :    * Check if this TypeId should not be listed in documentation.</a>
+<a name="276"><span class="lineNum">     276 </span>            :    *</a>
+<a name="277"><span class="lineNum">     277 </span>            :    * \returns \c true if this TypeId should be hidden from the user.</a>
+<a name="278"><span class="lineNum">     278 </span>            :    */</a>
+<a name="279"><span class="lineNum">     279 </span>            :   bool MustHideFromDocumentation (void) const;</a>
+<a name="280"><span class="lineNum">     280 </span>            : </a>
+<a name="281"><span class="lineNum">     281 </span>            : </a>
+<a name="282"><span class="lineNum">     282 </span>            :   /**</a>
+<a name="283"><span class="lineNum">     283 </span>            :    * Get the number of Trace sources.</a>
+<a name="284"><span class="lineNum">     284 </span>            :    *</a>
+<a name="285"><span class="lineNum">     285 </span>            :    * \returns The number of trace sources defined in this TypeId.</a>
+<a name="286"><span class="lineNum">     286 </span>            :    */</a>
+<a name="287"><span class="lineNum">     287 </span>            :   std::size_t GetTraceSourceN (void) const;</a>
+<a name="288"><span class="lineNum">     288 </span>            :   /**</a>
+<a name="289"><span class="lineNum">     289 </span>            :    * Get the trace source by index.</a>
+<a name="290"><span class="lineNum">     290 </span>            :    *</a>
+<a name="291"><span class="lineNum">     291 </span>            :    * \param [in] i Index into trace source array.</a>
+<a name="292"><span class="lineNum">     292 </span>            :    * \returns Detailed information about the requested trace source.</a>
+<a name="293"><span class="lineNum">     293 </span>            :    */</a>
+<a name="294"><span class="lineNum">     294 </span>            :   struct TypeId::TraceSourceInformation GetTraceSource (std::size_t i) const;</a>
+<a name="295"><span class="lineNum">     295 </span>            : </a>
+<a name="296"><span class="lineNum">     296 </span>            :   /**</a>
+<a name="297"><span class="lineNum">     297 </span>            :    * Set the parent TypeId.</a>
+<a name="298"><span class="lineNum">     298 </span>            :    *</a>
+<a name="299"><span class="lineNum">     299 </span>            :    * \param [in] tid The TypeId of the base class.</a>
+<a name="300"><span class="lineNum">     300 </span>            :    * \return This TypeId instance.</a>
+<a name="301"><span class="lineNum">     301 </span>            :    *</a>
+<a name="302"><span class="lineNum">     302 </span>            :    * Record in this TypeId which TypeId is the TypeId</a>
+<a name="303"><span class="lineNum">     303 </span>            :    * of the base class of the subclass.</a>
+<a name="304"><span class="lineNum">     304 </span>            :    */</a>
+<a name="305"><span class="lineNum">     305 </span>            :   TypeId SetParent (TypeId tid);</a>
+<a name="306"><span class="lineNum">     306 </span>            :   /**</a>
+<a name="307"><span class="lineNum">     307 </span>            :    * Set the parent TypeId.</a>
+<a name="308"><span class="lineNum">     308 </span>            :    *</a>
+<a name="309"><span class="lineNum">     309 </span>            :    * \tparam T \explicit The parent TypeID type.</a>
+<a name="310"><span class="lineNum">     310 </span>            :    * \return This TypeId instance.</a>
+<a name="311"><span class="lineNum">     311 </span>            :    *</a>
+<a name="312"><span class="lineNum">     312 </span>            :    * Record in this TypeId which TypeId is the TypeId</a>
+<a name="313"><span class="lineNum">     313 </span>            :    * of the base class of the subclass.</a>
+<a name="314"><span class="lineNum">     314 </span>            :    */</a>
+<a name="315"><span class="lineNum">     315 </span>            :   template &lt;typename T&gt;</a>
+<a name="316"><span class="lineNum">     316 </span>            :   TypeId SetParent (void);</a>
+<a name="317"><span class="lineNum">     317 </span>            : </a>
+<a name="318"><span class="lineNum">     318 </span>            :   /**</a>
+<a name="319"><span class="lineNum">     319 </span>            :    * Set the group name.</a>
+<a name="320"><span class="lineNum">     320 </span>            :    *</a>
+<a name="321"><span class="lineNum">     321 </span>            :    * \param [in] groupName The name of the group this TypeId belongs to.</a>
+<a name="322"><span class="lineNum">     322 </span>            :    * \returns This TypeId instance.</a>
+<a name="323"><span class="lineNum">     323 </span>            :    *</a>
+<a name="324"><span class="lineNum">     324 </span>            :    * The group name is purely an advisory information used to </a>
+<a name="325"><span class="lineNum">     325 </span>            :    * group together types according to a user-specific grouping</a>
+<a name="326"><span class="lineNum">     326 </span>            :    * scheme.</a>
+<a name="327"><span class="lineNum">     327 </span>            :    */</a>
+<a name="328"><span class="lineNum">     328 </span>            :   TypeId SetGroupName (std::string groupName);</a>
+<a name="329"><span class="lineNum">     329 </span>            : </a>
+<a name="330"><span class="lineNum">     330 </span>            :   /**</a>
+<a name="331"><span class="lineNum">     331 </span>            :    * Set the size of this type.</a>
+<a name="332"><span class="lineNum">     332 </span>            :    *</a>
+<a name="333"><span class="lineNum">     333 </span>            :    * Call this way:</a>
+<a name="334"><span class="lineNum">     334 </span>            :    * \code</a>
+<a name="335"><span class="lineNum">     335 </span>            :    *   SetSize (sizeof (&lt;typename&gt;));</a>
+<a name="336"><span class="lineNum">     336 </span>            :    * \endcode</a>
+<a name="337"><span class="lineNum">     337 </span>            :    * This is done automatically by NS_LOG_ENSURE_REGISTERED()</a>
+<a name="338"><span class="lineNum">     338 </span>            :    * A ridiculously large reported size is a symptom that the</a>
+<a name="339"><span class="lineNum">     339 </span>            :    * type hasn't been registered.</a>
+<a name="340"><span class="lineNum">     340 </span>            :    *</a>
+<a name="341"><span class="lineNum">     341 </span>            :    * \param [in] size The size of the object, in bytes.</a>
+<a name="342"><span class="lineNum">     342 </span>            :    * \returns This TypeId instance.</a>
+<a name="343"><span class="lineNum">     343 </span>            :    */</a>
+<a name="344"><span class="lineNum">     344 </span>            :   TypeId SetSize (std::size_t size);</a>
+<a name="345"><span class="lineNum">     345 </span>            :   </a>
+<a name="346"><span class="lineNum">     346 </span>            :   /**</a>
+<a name="347"><span class="lineNum">     347 </span>            :    * Record in this TypeId the fact that the default constructor</a>
+<a name="348"><span class="lineNum">     348 </span>            :    * is accessible.</a>
+<a name="349"><span class="lineNum">     349 </span>            :    *</a>
+<a name="350"><span class="lineNum">     350 </span>            :    * \tparam T \explicit The class name represented by this TypeId.</a>
+<a name="351"><span class="lineNum">     351 </span>            :    * \returns This TypeId instance</a>
+<a name="352"><span class="lineNum">     352 </span>            :    */</a>
+<a name="353"><span class="lineNum">     353 </span>            :   template &lt;typename T&gt;</a>
+<a name="354"><span class="lineNum">     354 </span>            :   TypeId AddConstructor (void);</a>
+<a name="355"><span class="lineNum">     355 </span>            : </a>
+<a name="356"><span class="lineNum">     356 </span>            :   /**</a>
+<a name="357"><span class="lineNum">     357 </span>            :    * Record in this TypeId the fact that a new attribute exists.</a>
+<a name="358"><span class="lineNum">     358 </span>            :    *</a>
+<a name="359"><span class="lineNum">     359 </span>            :    * \param [in] name The name of the new attribute</a>
+<a name="360"><span class="lineNum">     360 </span>            :    * \param [in] help Some help text which describes the purpose of this</a>
+<a name="361"><span class="lineNum">     361 </span>            :    *             attribute.</a>
+<a name="362"><span class="lineNum">     362 </span>            :    * \param [in] initialValue The initial value for this attribute.</a>
+<a name="363"><span class="lineNum">     363 </span>            :    * \param [in] accessor An instance of the associated AttributeAccessor</a>
+<a name="364"><span class="lineNum">     364 </span>            :    *             subclass.</a>
+<a name="365"><span class="lineNum">     365 </span>            :    * \param [in] checker An instance of the associated AttributeChecker</a>
+<a name="366"><span class="lineNum">     366 </span>            :    *             subclass.</a>
+<a name="367"><span class="lineNum">     367 </span>            :    * \param [in] supportLevel Support/deprecation status of the attribute.</a>
+<a name="368"><span class="lineNum">     368 </span>            :    * \param [in] supportMsg Upgrade hint if this attribute is no longer</a>
+<a name="369"><span class="lineNum">     369 </span>            :    *             supported.  If the attribute is \c DEPRECATED the attribute</a>
+<a name="370"><span class="lineNum">     370 </span>            :    *             behavior still exists, but user code should be updated</a>
+<a name="371"><span class="lineNum">     371 </span>            :    *             following guidance in the hint.</a>
+<a name="372"><span class="lineNum">     372 </span>            :    *             If the attribute is \c OBSOLETE, the hint should indicate</a>
+<a name="373"><span class="lineNum">     373 </span>            :    *             which class the attribute functional has been moved to,</a>
+<a name="374"><span class="lineNum">     374 </span>            :    *             or that the functionality is no longer supported.</a>
+<a name="375"><span class="lineNum">     375 </span>            :    *             See test file type-id-test-suite.cc for examples.</a>
+<a name="376"><span class="lineNum">     376 </span>            :    * \returns This TypeId instance</a>
+<a name="377"><span class="lineNum">     377 </span>            :    */</a>
+<a name="378"><span class="lineNum">     378 </span>            :   TypeId AddAttribute (std::string name,</a>
+<a name="379"><span class="lineNum">     379 </span>            :                        std::string help, </a>
+<a name="380"><span class="lineNum">     380 </span>            :                        const AttributeValue &amp;initialValue,</a>
+<a name="381"><span class="lineNum">     381 </span>            :                        Ptr&lt;const AttributeAccessor&gt; accessor,</a>
+<a name="382"><span class="lineNum">     382 </span>            :                        Ptr&lt;const AttributeChecker&gt; checker,</a>
+<a name="383"><span class="lineNum">     383 </span>            :                        SupportLevel supportLevel = SUPPORTED,</a>
+<a name="384"><span class="lineNum">     384 </span>            :                        const std::string &amp;supportMsg = &quot;&quot;);</a>
+<a name="385"><span class="lineNum">     385 </span>            : </a>
+<a name="386"><span class="lineNum">     386 </span>            :   /**</a>
+<a name="387"><span class="lineNum">     387 </span>            :    * Set the initial value of an Attribute.</a>
+<a name="388"><span class="lineNum">     388 </span>            :    *</a>
+<a name="389"><span class="lineNum">     389 </span>            :    * \param [in] i The attribute to manipulate</a>
+<a name="390"><span class="lineNum">     390 </span>            :    * \param [in] initialValue The new initial value to use for this attribute.</a>
+<a name="391"><span class="lineNum">     391 </span>            :    * \returns \c true if the call was successfully.</a>
+<a name="392"><span class="lineNum">     392 </span>            :    */</a>
+<a name="393"><span class="lineNum">     393 </span>            :   bool SetAttributeInitialValue (std::size_t i,</a>
+<a name="394"><span class="lineNum">     394 </span>            :                                  Ptr&lt;const AttributeValue&gt; initialValue);</a>
+<a name="395"><span class="lineNum">     395 </span>            : </a>
+<a name="396"><span class="lineNum">     396 </span>            :   /**</a>
+<a name="397"><span class="lineNum">     397 </span>            :    * Record in this TypeId the fact that a new attribute exists.</a>
+<a name="398"><span class="lineNum">     398 </span>            :    *</a>
+<a name="399"><span class="lineNum">     399 </span>            :    * \param [in] name The name of the new attribute</a>
+<a name="400"><span class="lineNum">     400 </span>            :    * \param [in] help Some help text which describes the purpose of this</a>
+<a name="401"><span class="lineNum">     401 </span>            :    *        attribute</a>
+<a name="402"><span class="lineNum">     402 </span>            :    * \param [in] flags Flags which describe how this attribute can be read and/or written.</a>
+<a name="403"><span class="lineNum">     403 </span>            :    * \param [in] initialValue The initial value for this attribute.</a>
+<a name="404"><span class="lineNum">     404 </span>            :    * \param [in] accessor An instance of the associated AttributeAccessor</a>
+<a name="405"><span class="lineNum">     405 </span>            :    *             subclass.</a>
+<a name="406"><span class="lineNum">     406 </span>            :    * \param [in] checker An instance of the associated AttributeChecker</a>
+<a name="407"><span class="lineNum">     407 </span>            :    *             subclass.</a>
+<a name="408"><span class="lineNum">     408 </span>            :    * \param [in] supportLevel Support/deprecation status of the attribute.</a>
+<a name="409"><span class="lineNum">     409 </span>            :    * \param [in] supportMsg Upgrade hint if this attribute is no longer</a>
+<a name="410"><span class="lineNum">     410 </span>            :    *             supported.  If the attribute is \c DEPRECATED the attribute</a>
+<a name="411"><span class="lineNum">     411 </span>            :    *             behavior still exists, but user code should be updated</a>
+<a name="412"><span class="lineNum">     412 </span>            :    *             following guidance in the hint..</a>
+<a name="413"><span class="lineNum">     413 </span>            :    *             If the attribute is \c OBSOLETE, the hint should indicate</a>
+<a name="414"><span class="lineNum">     414 </span>            :    *             which class the attribute functional has been moved to,</a>
+<a name="415"><span class="lineNum">     415 </span>            :    *             or that the functionality is no longer supported.</a>
+<a name="416"><span class="lineNum">     416 </span>            :    * \returns This TypeId instance</a>
+<a name="417"><span class="lineNum">     417 </span>            :    */</a>
+<a name="418"><span class="lineNum">     418 </span>            :   TypeId AddAttribute (std::string name,</a>
+<a name="419"><span class="lineNum">     419 </span>            :                        std::string help, </a>
+<a name="420"><span class="lineNum">     420 </span>            :                        uint32_t flags,</a>
+<a name="421"><span class="lineNum">     421 </span>            :                        const AttributeValue &amp;initialValue,</a>
+<a name="422"><span class="lineNum">     422 </span>            :                        Ptr&lt;const AttributeAccessor&gt; accessor,</a>
+<a name="423"><span class="lineNum">     423 </span>            :                        Ptr&lt;const AttributeChecker&gt; checker,</a>
+<a name="424"><span class="lineNum">     424 </span>            :                        SupportLevel supportLevel = SUPPORTED,</a>
+<a name="425"><span class="lineNum">     425 </span>            :                        const std::string &amp;supportMsg = &quot;&quot;);</a>
+<a name="426"><span class="lineNum">     426 </span>            : </a>
+<a name="427"><span class="lineNum">     427 </span>            :   /**</a>
+<a name="428"><span class="lineNum">     428 </span>            :    * Record a new TraceSource.</a>
+<a name="429"><span class="lineNum">     429 </span>            :    *</a>
+<a name="430"><span class="lineNum">     430 </span>            :    * \param [in] name The name of the new trace source</a>
+<a name="431"><span class="lineNum">     431 </span>            :    * \param [in] help Some help text which describes the purpose of this</a>
+<a name="432"><span class="lineNum">     432 </span>            :    *             trace source.</a>
+<a name="433"><span class="lineNum">     433 </span>            :    * \param [in] accessor A pointer to a TraceSourceAccessor which can be</a>
+<a name="434"><span class="lineNum">     434 </span>            :    *             used to connect/disconnect sinks to this trace source.</a>
+<a name="435"><span class="lineNum">     435 </span>            :    * \returns this TypeId instance.</a>
+<a name="436"><span class="lineNum">     436 </span>            :    * \deprecated</a>
+<a name="437"><span class="lineNum">     437 </span>            :    */</a>
+<a name="438"><span class="lineNum">     438 </span>            :   NS_DEPRECATED</a>
+<a name="439"><span class="lineNum">     439 </span>            :   TypeId AddTraceSource (std::string name,</a>
+<a name="440"><span class="lineNum">     440 </span>            :                          std::string help,</a>
+<a name="441"><span class="lineNum">     441 </span>            :                          Ptr&lt;const TraceSourceAccessor&gt; accessor);</a>
+<a name="442"><span class="lineNum">     442 </span>            :   </a>
+<a name="443"><span class="lineNum">     443 </span>            :   /**</a>
+<a name="444"><span class="lineNum">     444 </span>            :    * Record a new TraceSource.</a>
+<a name="445"><span class="lineNum">     445 </span>            :    *</a>
+<a name="446"><span class="lineNum">     446 </span>            :    * \param [in] name The name of the new trace source</a>
+<a name="447"><span class="lineNum">     447 </span>            :    * \param [in] help Some help text which describes the purpose of this</a>
+<a name="448"><span class="lineNum">     448 </span>            :    *             trace source.</a>
+<a name="449"><span class="lineNum">     449 </span>            :    * \param [in] accessor A pointer to a TraceSourceAccessor which can be</a>
+<a name="450"><span class="lineNum">     450 </span>            :    *             used to connect/disconnect sinks to this trace source.</a>
+<a name="451"><span class="lineNum">     451 </span>            :    * \param [in] callback Fully qualified typedef name for the callback</a>
+<a name="452"><span class="lineNum">     452 </span>            :    *             signature.  Generally this should begin with the</a>
+<a name="453"><span class="lineNum">     453 </span>            :    *             &quot;ns3::&quot; namespace qualifier.</a>
+<a name="454"><span class="lineNum">     454 </span>            :    * \param [in] supportLevel Support/deprecation status of the attribute.</a>
+<a name="455"><span class="lineNum">     455 </span>            :    * \param [in] supportMsg Upgrade hint if this attribute is no longer</a>
+<a name="456"><span class="lineNum">     456 </span>            :    *             supported.  If the attribute is \c DEPRECATED the attribute</a>
+<a name="457"><span class="lineNum">     457 </span>            :    *             behavior still exists, but user code should be updated</a>
+<a name="458"><span class="lineNum">     458 </span>            :    *             following guidance in the hint..</a>
+<a name="459"><span class="lineNum">     459 </span>            :    *             If the attribute is \c OBSOLETE, the hint should indicate</a>
+<a name="460"><span class="lineNum">     460 </span>            :    *             which class the attribute functional has been moved to,</a>
+<a name="461"><span class="lineNum">     461 </span>            :    *             or that the functionality is no longer supported.</a>
+<a name="462"><span class="lineNum">     462 </span>            :    *             See test file type-id-test-suite.cc for examples.</a>
+<a name="463"><span class="lineNum">     463 </span>            :    * \returns This TypeId instance.</a>
+<a name="464"><span class="lineNum">     464 </span>            :    */</a>
+<a name="465"><span class="lineNum">     465 </span>            :   TypeId AddTraceSource (std::string name,</a>
+<a name="466"><span class="lineNum">     466 </span>            :                          std::string help,</a>
+<a name="467"><span class="lineNum">     467 </span>            :                          Ptr&lt;const TraceSourceAccessor&gt; accessor,</a>
+<a name="468"><span class="lineNum">     468 </span>            :                          std::string callback,</a>
+<a name="469"><span class="lineNum">     469 </span>            :                          SupportLevel supportLevel = SUPPORTED,</a>
+<a name="470"><span class="lineNum">     470 </span>            :                          const std::string &amp;supportMsg = &quot;&quot;);</a>
+<a name="471"><span class="lineNum">     471 </span>            : </a>
+<a name="472"><span class="lineNum">     472 </span>            :   /**</a>
+<a name="473"><span class="lineNum">     473 </span>            :    * Hide this TypeId from documentation.</a>
+<a name="474"><span class="lineNum">     474 </span>            :    * \returns This TypeId instance.</a>
+<a name="475"><span class="lineNum">     475 </span>            :    */</a>
+<a name="476"><span class="lineNum">     476 </span>            :   TypeId HideFromDocumentation (void);</a>
+<a name="477"><span class="lineNum">     477 </span>            : </a>
+<a name="478"><span class="lineNum">     478 </span>            :   /**</a>
+<a name="479"><span class="lineNum">     479 </span>            :    * Find an Attribute by name, retrieving the associated AttributeInformation.</a>
+<a name="480"><span class="lineNum">     480 </span>            :    *</a>
+<a name="481"><span class="lineNum">     481 </span>            :    * \param [in]  name The name of the requested attribute</a>
+<a name="482"><span class="lineNum">     482 </span>            :    * \param [in,out] info A pointer to the TypeId::AttributeInformation</a>
+<a name="483"><span class="lineNum">     483 </span>            :    *              data structure where the result value of this method</a>
+<a name="484"><span class="lineNum">     484 </span>            :    *              will be stored.</a>
+<a name="485"><span class="lineNum">     485 </span>            :    * \returns \c true if the requested attribute could be found.</a>
+<a name="486"><span class="lineNum">     486 </span>            :    */</a>
+<a name="487"><span class="lineNum">     487 </span>            :   bool LookupAttributeByName (std::string name, struct AttributeInformation *info) const;</a>
+<a name="488"><span class="lineNum">     488 </span>            :   /**</a>
+<a name="489"><span class="lineNum">     489 </span>            :    * Find a TraceSource by name.</a>
+<a name="490"><span class="lineNum">     490 </span>            :    *</a>
+<a name="491"><span class="lineNum">     491 </span>            :    * If no matching trace source is found, this method returns zero.</a>
+<a name="492"><span class="lineNum">     492 </span>            :    *</a>
+<a name="493"><span class="lineNum">     493 </span>            :    * \param [in] name The name of the requested trace source</a>
+<a name="494"><span class="lineNum">     494 </span>            :    * \return The trace source accessor which can be used to connect</a>
+<a name="495"><span class="lineNum">     495 </span>            :    *  and disconnect trace sinks with the requested trace source on</a>
+<a name="496"><span class="lineNum">     496 </span>            :    *  an object instance.</a>
+<a name="497"><span class="lineNum">     497 </span>            :    */</a>
+<a name="498"><span class="lineNum">     498 </span>            :   Ptr&lt;const TraceSourceAccessor&gt; LookupTraceSourceByName (std::string name) const;</a>
+<a name="499"><span class="lineNum">     499 </span>            :   /**</a>
+<a name="500"><span class="lineNum">     500 </span>            :    * Find a TraceSource by name, retrieving the associated TraceSourceInformation.</a>
+<a name="501"><span class="lineNum">     501 </span>            :    *</a>
+<a name="502"><span class="lineNum">     502 </span>            :    * \param [in]  name The name of the requested trace source.</a>
+<a name="503"><span class="lineNum">     503 </span>            :    * \param [out] info A pointer to the TypeId::TraceSourceInformation</a>
+<a name="504"><span class="lineNum">     504 </span>            :    *              data structure where the result value of this method</a>
+<a name="505"><span class="lineNum">     505 </span>            :    *              will be stored.</a>
+<a name="506"><span class="lineNum">     506 </span>            :    * \return The trace source accessor which can be used to connect</a>
+<a name="507"><span class="lineNum">     507 </span>            :    *  and disconnect trace sinks with the requested trace source on</a>
+<a name="508"><span class="lineNum">     508 </span>            :    *  an object instance.</a>
+<a name="509"><span class="lineNum">     509 </span>            :    */</a>
+<a name="510"><span class="lineNum">     510 </span>            :   Ptr&lt;const TraceSourceAccessor&gt; LookupTraceSourceByName (std::string name, struct TraceSourceInformation *info) const;</a>
+<a name="511"><span class="lineNum">     511 </span>            : </a>
+<a name="512"><span class="lineNum">     512 </span>            :   /**</a>
+<a name="513"><span class="lineNum">     513 </span>            :    * Get the internal id of this TypeId.</a>
+<a name="514"><span class="lineNum">     514 </span>            :    *</a>
+<a name="515"><span class="lineNum">     515 </span>            :    * \returns The internal integer which uniquely identifies this TypeId.</a>
+<a name="516"><span class="lineNum">     516 </span>            :    *</a>
+<a name="517"><span class="lineNum">     517 </span>            :    * This is really an internal method which users are not expected</a>
+<a name="518"><span class="lineNum">     518 </span>            :    * to use.</a>
+<a name="519"><span class="lineNum">     519 </span>            :    */</a>
+<a name="520"><span class="lineNum">     520 </span>            :   uint16_t GetUid (void) const;</a>
+<a name="521"><span class="lineNum">     521 </span>            :   /**</a>
+<a name="522"><span class="lineNum">     522 </span>            :    * Set the internal id of this TypeId.</a>
+<a name="523"><span class="lineNum">     523 </span>            :    *</a>
+<a name="524"><span class="lineNum">     524 </span>            :    * \param [in] uid The internal integer which uniquely identifies</a>
+<a name="525"><span class="lineNum">     525 </span>            :    *            this TypeId.  This TypeId should already have been registered.</a>
+<a name="526"><span class="lineNum">     526 </span>            :    *</a>
+<a name="527"><span class="lineNum">     527 </span>            :    * Typically this is used in serialization/deserialization.</a>
+<a name="528"><span class="lineNum">     528 </span>            :    *</a>
+<a name="529"><span class="lineNum">     529 </span>            :    * This method is even more internal than GetUid(). Use</a>
+<a name="530"><span class="lineNum">     530 </span>            :    * at your own risk and don't be surprised that it eats raw </a>
+<a name="531"><span class="lineNum">     531 </span>            :    * babies on full-moon nights.</a>
+<a name="532"><span class="lineNum">     532 </span>            :    */</a>
+<a name="533"><span class="lineNum">     533 </span>            :   void SetUid (uint16_t uid);</a>
+<a name="534"><span class="lineNum">     534 </span>            : </a>
+<a name="535"><span class="lineNum">     535 </span>            :   /** Default constructor.  This produces an invalid TypeId. */</a>
+<a name="536"><span class="lineNum">     536 </span>            :   inline TypeId ();</a>
+<a name="537"><span class="lineNum">     537 </span>            :   /**</a>
+<a name="538"><span class="lineNum">     538 </span>            :    * Copy constructor.</a>
+<a name="539"><span class="lineNum">     539 </span>            :    * \param [in] o The other TypeId.</a>
+<a name="540"><span class="lineNum">     540 </span>            :    */</a>
+<a name="541"><span class="lineNum">     541 </span>            :   inline TypeId (const TypeId &amp;o);</a>
+<a name="542"><span class="lineNum">     542 </span>            :   /**</a>
+<a name="543"><span class="lineNum">     543 </span>            :    * Assignment.</a>
+<a name="544"><span class="lineNum">     544 </span>            :    * \param [in] o The other TypeId.</a>
+<a name="545"><span class="lineNum">     545 </span>            :    * \returns The copied TypeId.</a>
+<a name="546"><span class="lineNum">     546 </span>            :    */</a>
+<a name="547"><span class="lineNum">     547 </span>            :   inline TypeId &amp;operator = (const TypeId &amp;o);</a>
+<a name="548"><span class="lineNum">     548 </span>            :   /** Destructor. */</a>
+<a name="549"><span class="lineNum">     549 </span>            :   inline ~TypeId ();</a>
+<a name="550"><span class="lineNum">     550 </span>            : </a>
+<a name="551"><span class="lineNum">     551 </span>            : private:</a>
+<a name="552"><span class="lineNum">     552 </span>            :   /**</a>
+<a name="553"><span class="lineNum">     553 </span>            :    * \name Comparison operators.</a>
+<a name="554"><span class="lineNum">     554 </span>            :    * Standard comparison operators.</a>
+<a name="555"><span class="lineNum">     555 </span>            :    * @{</a>
+<a name="556"><span class="lineNum">     556 </span>            :    */</a>
+<a name="557"><span class="lineNum">     557 </span>            :   friend inline bool operator == (TypeId a, TypeId b);</a>
+<a name="558"><span class="lineNum">     558 </span>            :   friend inline bool operator != (TypeId a, TypeId b);</a>
+<a name="559"><span class="lineNum">     559 </span>            :   friend  bool operator &lt;  (TypeId a, TypeId b);</a>
+<a name="560"><span class="lineNum">     560 </span>            :   /**@}*/</a>
+<a name="561"><span class="lineNum">     561 </span>            : </a>
+<a name="562"><span class="lineNum">     562 </span>            :   /**</a>
+<a name="563"><span class="lineNum">     563 </span>            :    * Construct from an integer value.</a>
+<a name="564"><span class="lineNum">     564 </span>            :    * \param [in] tid The TypeId value as an integer.</a>
+<a name="565"><span class="lineNum">     565 </span>            :    */</a>
+<a name="566"><span class="lineNum">     566 </span>            :   explicit TypeId (uint16_t tid);</a>
+<a name="567"><span class="lineNum">     567 </span>            :   /**</a>
+<a name="568"><span class="lineNum">     568 </span>            :    * Implementation for AddConstructor().</a>
+<a name="569"><span class="lineNum">     569 </span>            :    *</a>
+<a name="570"><span class="lineNum">     570 </span>            :    * \param [in] callback Callback which constructs an instance of this TypeId.</a>
+<a name="571"><span class="lineNum">     571 </span>            :    */</a>
+<a name="572"><span class="lineNum">     572 </span>            :   void DoAddConstructor (Callback&lt;ObjectBase *&gt; callback);</a>
+<a name="573"><span class="lineNum">     573 </span>            :   </a>
+<a name="574"><span class="lineNum">     574 </span>            :   /** The TypeId value. */ </a>
+<a name="575"><span class="lineNum">     575 </span>            :   uint16_t m_tid;</a>
+<a name="576"><span class="lineNum">     576 </span>            : };</a>
+<a name="577"><span class="lineNum">     577 </span>            : </a>
+<a name="578"><span class="lineNum">     578 </span>            : /**</a>
+<a name="579"><span class="lineNum">     579 </span>            :  * \relates TypeId</a>
+<a name="580"><span class="lineNum">     580 </span>            :  * Output streamer.</a>
+<a name="581"><span class="lineNum">     581 </span>            :  *</a>
+<a name="582"><span class="lineNum">     582 </span>            :  * \param [in,out] os The output stream.</a>
+<a name="583"><span class="lineNum">     583 </span>            :  * \param [in] tid The TypeId.</a>
+<a name="584"><span class="lineNum">     584 </span>            :  * \returns The output stream.</a>
+<a name="585"><span class="lineNum">     585 </span>            :  */</a>
+<a name="586"><span class="lineNum">     586 </span>            : std::ostream &amp; operator &lt;&lt; (std::ostream &amp;os, TypeId tid);</a>
+<a name="587"><span class="lineNum">     587 </span>            : /**</a>
+<a name="588"><span class="lineNum">     588 </span>            :  * \relates TypeId</a>
+<a name="589"><span class="lineNum">     589 </span>            :  * Input Streamer.</a>
+<a name="590"><span class="lineNum">     590 </span>            :  * \param [in,out] is The input stream.</a>
+<a name="591"><span class="lineNum">     591 </span>            :  * \param [out] tid The TypeId to set from the stream.</a>
+<a name="592"><span class="lineNum">     592 </span>            :  * \returns The input stream.</a>
+<a name="593"><span class="lineNum">     593 </span>            :  */</a>
+<a name="594"><span class="lineNum">     594 </span>            : std::istream &amp; operator &gt;&gt; (std::istream &amp;is, TypeId &amp;tid);</a>
+<a name="595"><span class="lineNum">     595 </span>            :   </a>
+<a name="596"><span class="lineNum">     596 </span>            :  /**</a>
+<a name="597"><span class="lineNum">     597 </span>            :   * Comparison operator.</a>
+<a name="598"><span class="lineNum">     598 </span>            :   * \param [in] a One value.</a>
+<a name="599"><span class="lineNum">     599 </span>            :   * \param [in] b The other value.</a>
+<a name="600"><span class="lineNum">     600 </span>            :   * \returns The result of the comparison.</a>
+<a name="601"><span class="lineNum">     601 </span>            :   * @{</a>
+<a name="602"><span class="lineNum">     602 </span>            :   */</a>
+<a name="603"><span class="lineNum">     603 </span>            : inline bool operator == (TypeId a, TypeId b);</a>
+<a name="604"><span class="lineNum">     604 </span>            : inline bool operator != (TypeId a, TypeId b);</a>
+<a name="605"><span class="lineNum">     605 </span>            : bool operator &lt;  (TypeId a, TypeId b);</a>
+<a name="606"><span class="lineNum">     606 </span>            : /** @} */</a>
+<a name="607"><span class="lineNum">     607 </span>            : </a>
+<a name="608"><span class="lineNum">     608 </span>            : ATTRIBUTE_HELPER_HEADER (TypeId);</a>
+<a name="609"><span class="lineNum">     609 </span>            : </a>
+<a name="610"><span class="lineNum">     610 </span>            : } // namespace ns3 </a>
+<a name="611"><span class="lineNum">     611 </span>            : </a>
+<a name="612"><span class="lineNum">     612 </span>            : namespace ns3 {</a>
+<a name="613"><span class="lineNum">     613 </span>            : </a>
+<a name="614"><span class="lineNum">     614 </span><span class="lineCov">   10559100 : TypeId::TypeId ()</span></a>
+<a name="615"><span class="lineNum">     615 </span><span class="lineCov">   10559100 :   : m_tid (0) {</span></a>
+<a name="616"><span class="lineNum">     616 </span><span class="lineCov">   10559100 : }</span></a>
+<a name="617"><span class="lineNum">     617 </span><span class="lineNoCov">          0 : TypeId::TypeId (const TypeId &amp;o)</span></a>
+<a name="618"><span class="lineNum">     618 </span><span class="lineNoCov">          0 :   : m_tid (o.m_tid) {</span></a>
+<a name="619"><span class="lineNum">     619 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="620"><span class="lineNum">     620 </span><span class="lineCov">   23094000 : TypeId &amp;TypeId::operator = (const TypeId &amp;o)</span></a>
+<a name="621"><span class="lineNum">     621 </span>            : {</a>
+<a name="622"><span class="lineNum">     622 </span><span class="lineCov">   23094000 :   m_tid = o.m_tid;</span></a>
+<a name="623"><span class="lineNum">     623 </span><span class="lineCov">   23094000 :   return *this;</span></a>
+<a name="624"><span class="lineNum">     624 </span>            : }</a>
+<a name="625"><span class="lineNum">     625 </span><span class="lineNoCov">          0 : TypeId::~TypeId ()</span></a>
+<a name="626"><span class="lineNum">     626 </span>            : {</a>
+<a name="627"><span class="lineNum">     627 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="628"><span class="lineNum">     628 </span><span class="lineNoCov">          0 : inline bool operator == (TypeId a, TypeId b)</span></a>
+<a name="629"><span class="lineNum">     629 </span>            : {</a>
+<a name="630"><span class="lineNum">     630 </span><span class="lineNoCov">          0 :   return a.m_tid == b.m_tid;</span></a>
+<a name="631"><span class="lineNum">     631 </span>            : }</a>
+<a name="632"><span class="lineNum">     632 </span>            : </a>
+<a name="633"><span class="lineNum">     633 </span><span class="lineCov">    9400700 : inline bool operator != (TypeId a, TypeId b)</span></a>
+<a name="634"><span class="lineNum">     634 </span>            : {</a>
+<a name="635"><span class="lineNum">     635 </span><span class="lineCov">    9400700 :   return a.m_tid != b.m_tid;</span></a>
+<a name="636"><span class="lineNum">     636 </span>            : }</a>
+<a name="637"><span class="lineNum">     637 </span>            : </a>
+<a name="638"><span class="lineNum">     638 </span>            : </a>
+<a name="639"><span class="lineNum">     639 </span>            : /*************************************************************************</a>
+<a name="640"><span class="lineNum">     640 </span>            :  *   The TypeId implementation which depends on templates</a>
+<a name="641"><span class="lineNum">     641 </span>            :  *************************************************************************/</a>
+<a name="642"><span class="lineNum">     642 </span>            : </a>
+<a name="643"><span class="lineNum">     643 </span>            : template &lt;typename T&gt;</a>
+<a name="644"><span class="lineNum">     644 </span>            : TypeId </a>
+<a name="645"><span class="lineNum">     645 </span><span class="lineCov">        805 : TypeId::SetParent (void)</span></a>
+<a name="646"><span class="lineNum">     646 </span>            : {</a>
+<a name="647"><span class="lineNum">     647 </span><span class="lineCov">        805 :   return SetParent (T::GetTypeId ());</span></a>
+<a name="648"><span class="lineNum">     648 </span>            : }</a>
+<a name="649"><span class="lineNum">     649 </span>            : </a>
+<a name="650"><span class="lineNum">     650 </span>            : template &lt;typename T&gt;</a>
+<a name="651"><span class="lineNum">     651 </span>            : TypeId </a>
+<a name="652"><span class="lineNum">     652 </span><span class="lineCov">        735 : TypeId::AddConstructor (void)</span></a>
+<a name="653"><span class="lineNum">     653 </span>            : {</a>
+<a name="654"><span class="lineNum">     654 </span>            :   struct Maker {</a>
+<a name="655"><span class="lineNum">     655 </span><span class="lineCov">         68 :     static ObjectBase * Create () {</span></a>
+<a name="656"><span class="lineNum">     656 </span><span class="lineCov">         68 :       ObjectBase * base = new T ();</span></a>
+<a name="657"><span class="lineNum">     657 </span><span class="lineCov">         68 :       return base;</span></a>
+<a name="658"><span class="lineNum">     658 </span>            :     }</a>
+<a name="659"><span class="lineNum">     659 </span>            :   };</a>
+<a name="660"><span class="lineNum">     660 </span><span class="lineCov">       1470 :   Callback&lt;ObjectBase *&gt; cb = MakeCallback (&amp;Maker::Create);</span></a>
+<a name="661"><span class="lineNum">     661 </span><span class="lineCov">        735 :   DoAddConstructor (cb);</span></a>
+<a name="662"><span class="lineNum">     662 </span><span class="lineCov">       1470 :   return *this;</span></a>
+<a name="663"><span class="lineNum">     663 </span>            : }</a>
+<a name="664"><span class="lineNum">     664 </span>            : </a>
+<a name="665"><span class="lineNum">     665 </span>            : } // namespace ns3</a>
+<a name="666"><span class="lineNum">     666 </span>            : </a>
+<a name="667"><span class="lineNum">     667 </span>            : #endif /* TYPE_ID_H */</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+total number of requests is 1025
+total number of hits is     959
+total number of misses is   66

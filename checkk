@@ -1,0 +1,8 @@
+tools/x86_trace_generator/LAB3_BMs/cache_test_2Arrays_4KB_4_1
+-> Thread[0->0] begins.
+-> Trace Generation Starts at icount 0
+Thread 0 sim begin
+-> Thread 0 starts instrumentation at 144369
+-> tid 0 inst count 151863  instrumented inst# 7494 (from 0)
+-> Final icount: 151863
+-> Exiting...

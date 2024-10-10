@@ -1,0 +1,582 @@
+[
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/time.cc -c -o/home/dm4/cachesim/build/src/core/model/time.cc.2.o",
+    "file": "../src/core/model/time.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/event-id.cc -c -o/home/dm4/cachesim/build/src/core/model/event-id.cc.2.o",
+    "file": "../src/core/model/event-id.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/scheduler.cc -c -o/home/dm4/cachesim/build/src/core/model/scheduler.cc.2.o",
+    "file": "../src/core/model/scheduler.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/list-scheduler.cc -c -o/home/dm4/cachesim/build/src/core/model/list-scheduler.cc.2.o",
+    "file": "../src/core/model/list-scheduler.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/map-scheduler.cc -c -o/home/dm4/cachesim/build/src/core/model/map-scheduler.cc.2.o",
+    "file": "../src/core/model/map-scheduler.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/heap-scheduler.cc -c -o/home/dm4/cachesim/build/src/core/model/heap-scheduler.cc.2.o",
+    "file": "../src/core/model/heap-scheduler.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/calendar-scheduler.cc -c -o/home/dm4/cachesim/build/src/core/model/calendar-scheduler.cc.2.o",
+    "file": "../src/core/model/calendar-scheduler.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/event-impl.cc -c -o/home/dm4/cachesim/build/src/core/model/event-impl.cc.2.o",
+    "file": "../src/core/model/event-impl.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/simulator.cc -c -o/home/dm4/cachesim/build/src/core/model/simulator.cc.2.o",
+    "file": "../src/core/model/simulator.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/simulator-impl.cc -c -o/home/dm4/cachesim/build/src/core/model/simulator-impl.cc.2.o",
+    "file": "../src/core/model/simulator-impl.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/default-simulator-impl.cc -c -o/home/dm4/cachesim/build/src/core/model/default-simulator-impl.cc.2.o",
+    "file": "../src/core/model/default-simulator-impl.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/timer.cc -c -o/home/dm4/cachesim/build/src/core/model/timer.cc.2.o",
+    "file": "../src/core/model/timer.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/watchdog.cc -c -o/home/dm4/cachesim/build/src/core/model/watchdog.cc.2.o",
+    "file": "../src/core/model/watchdog.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/synchronizer.cc -c -o/home/dm4/cachesim/build/src/core/model/synchronizer.cc.2.o",
+    "file": "../src/core/model/synchronizer.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/make-event.cc -c -o/home/dm4/cachesim/build/src/core/model/make-event.cc.2.o",
+    "file": "../src/core/model/make-event.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/log.cc -c -o/home/dm4/cachesim/build/src/core/model/log.cc.2.o",
+    "file": "../src/core/model/log.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/breakpoint.cc -c -o/home/dm4/cachesim/build/src/core/model/breakpoint.cc.2.o",
+    "file": "../src/core/model/breakpoint.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/type-id.cc -c -o/home/dm4/cachesim/build/src/core/model/type-id.cc.2.o",
+    "file": "../src/core/model/type-id.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/attribute-construction-list.cc -c -o/home/dm4/cachesim/build/src/core/model/attribute-construction-list.cc.2.o",
+    "file": "../src/core/model/attribute-construction-list.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/object-base.cc -c -o/home/dm4/cachesim/build/src/core/model/object-base.cc.2.o",
+    "file": "../src/core/model/object-base.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/ref-count-base.cc -c -o/home/dm4/cachesim/build/src/core/model/ref-count-base.cc.2.o",
+    "file": "../src/core/model/ref-count-base.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/object.cc -c -o/home/dm4/cachesim/build/src/core/model/object.cc.2.o",
+    "file": "../src/core/model/object.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/test.cc -c -o/home/dm4/cachesim/build/src/core/model/test.cc.2.o",
+    "file": "../src/core/model/test.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/random-variable-stream.cc -c -o/home/dm4/cachesim/build/src/core/model/random-variable-stream.cc.2.o",
+    "file": "../src/core/model/random-variable-stream.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/rng-seed-manager.cc -c -o/home/dm4/cachesim/build/src/core/model/rng-seed-manager.cc.2.o",
+    "file": "../src/core/model/rng-seed-manager.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/rng-stream.cc -c -o/home/dm4/cachesim/build/src/core/model/rng-stream.cc.2.o",
+    "file": "../src/core/model/rng-stream.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/command-line.cc -c -o/home/dm4/cachesim/build/src/core/model/command-line.cc.2.o",
+    "file": "../src/core/model/command-line.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/type-name.cc -c -o/home/dm4/cachesim/build/src/core/model/type-name.cc.2.o",
+    "file": "../src/core/model/type-name.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/attribute.cc -c -o/home/dm4/cachesim/build/src/core/model/attribute.cc.2.o",
+    "file": "../src/core/model/attribute.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/boolean.cc -c -o/home/dm4/cachesim/build/src/core/model/boolean.cc.2.o",
+    "file": "../src/core/model/boolean.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/integer.cc -c -o/home/dm4/cachesim/build/src/core/model/integer.cc.2.o",
+    "file": "../src/core/model/integer.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/uinteger.cc -c -o/home/dm4/cachesim/build/src/core/model/uinteger.cc.2.o",
+    "file": "../src/core/model/uinteger.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/enum.cc -c -o/home/dm4/cachesim/build/src/core/model/enum.cc.2.o",
+    "file": "../src/core/model/enum.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/double.cc -c -o/home/dm4/cachesim/build/src/core/model/double.cc.2.o",
+    "file": "../src/core/model/double.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/int64x64.cc -c -o/home/dm4/cachesim/build/src/core/model/int64x64.cc.2.o",
+    "file": "../src/core/model/int64x64.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/string.cc -c -o/home/dm4/cachesim/build/src/core/model/string.cc.2.o",
+    "file": "../src/core/model/string.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/pointer.cc -c -o/home/dm4/cachesim/build/src/core/model/pointer.cc.2.o",
+    "file": "../src/core/model/pointer.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/object-ptr-container.cc -c -o/home/dm4/cachesim/build/src/core/model/object-ptr-container.cc.2.o",
+    "file": "../src/core/model/object-ptr-container.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/object-factory.cc -c -o/home/dm4/cachesim/build/src/core/model/object-factory.cc.2.o",
+    "file": "../src/core/model/object-factory.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/global-value.cc -c -o/home/dm4/cachesim/build/src/core/model/global-value.cc.2.o",
+    "file": "../src/core/model/global-value.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/trace-source-accessor.cc -c -o/home/dm4/cachesim/build/src/core/model/trace-source-accessor.cc.2.o",
+    "file": "../src/core/model/trace-source-accessor.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/config.cc -c -o/home/dm4/cachesim/build/src/core/model/config.cc.2.o",
+    "file": "../src/core/model/config.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/callback.cc -c -o/home/dm4/cachesim/build/src/core/model/callback.cc.2.o",
+    "file": "../src/core/model/callback.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/names.cc -c -o/home/dm4/cachesim/build/src/core/model/names.cc.2.o",
+    "file": "../src/core/model/names.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/vector.cc -c -o/home/dm4/cachesim/build/src/core/model/vector.cc.2.o",
+    "file": "../src/core/model/vector.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/fatal-impl.cc -c -o/home/dm4/cachesim/build/src/core/model/fatal-impl.cc.2.o",
+    "file": "../src/core/model/fatal-impl.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/system-path.cc -c -o/home/dm4/cachesim/build/src/core/model/system-path.cc.2.o",
+    "file": "../src/core/model/system-path.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/helper/random-variable-stream-helper.cc -c -o/home/dm4/cachesim/build/src/core/helper/random-variable-stream-helper.cc.2.o",
+    "file": "../src/core/helper/random-variable-stream-helper.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/helper/event-garbage-collector.cc -c -o/home/dm4/cachesim/build/src/core/helper/event-garbage-collector.cc.2.o",
+    "file": "../src/core/helper/event-garbage-collector.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/hash-function.cc -c -o/home/dm4/cachesim/build/src/core/model/hash-function.cc.2.o",
+    "file": "../src/core/model/hash-function.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/hash-murmur3.cc -c -o/home/dm4/cachesim/build/src/core/model/hash-murmur3.cc.2.o",
+    "file": "../src/core/model/hash-murmur3.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/hash-fnv.cc -c -o/home/dm4/cachesim/build/src/core/model/hash-fnv.cc.2.o",
+    "file": "../src/core/model/hash-fnv.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/hash.cc -c -o/home/dm4/cachesim/build/src/core/model/hash.cc.2.o",
+    "file": "../src/core/model/hash.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/des-metrics.cc -c -o/home/dm4/cachesim/build/src/core/model/des-metrics.cc.2.o",
+    "file": "../src/core/model/des-metrics.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/node-printer.cc -c -o/home/dm4/cachesim/build/src/core/model/node-printer.cc.2.o",
+    "file": "../src/core/model/node-printer.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/time-printer.cc -c -o/home/dm4/cachesim/build/src/core/model/time-printer.cc.2.o",
+    "file": "../src/core/model/time-printer.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/show-progress.cc -c -o/home/dm4/cachesim/build/src/core/model/show-progress.cc.2.o",
+    "file": "../src/core/model/show-progress.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/unix-system-wall-clock-ms.cc -c -o/home/dm4/cachesim/build/src/core/model/unix-system-wall-clock-ms.cc.2.o",
+    "file": "../src/core/model/unix-system-wall-clock-ms.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/int64x64-128.cc -c -o/home/dm4/cachesim/build/src/core/model/int64x64-128.cc.2.o",
+    "file": "../src/core/model/int64x64-128.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/realtime-simulator-impl.cc -c -o/home/dm4/cachesim/build/src/core/model/realtime-simulator-impl.cc.2.o",
+    "file": "../src/core/model/realtime-simulator-impl.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/wall-clock-synchronizer.cc -c -o/home/dm4/cachesim/build/src/core/model/wall-clock-synchronizer.cc.2.o",
+    "file": "../src/core/model/wall-clock-synchronizer.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/system-thread.cc -c -o/home/dm4/cachesim/build/src/core/model/system-thread.cc.2.o",
+    "file": "../src/core/model/system-thread.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/unix-fd-reader.cc -c -o/home/dm4/cachesim/build/src/core/model/unix-fd-reader.cc.2.o",
+    "file": "../src/core/model/unix-fd-reader.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/unix-system-mutex.cc -c -o/home/dm4/cachesim/build/src/core/model/unix-system-mutex.cc.2.o",
+    "file": "../src/core/model/unix-system-mutex.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/core/model/unix-system-condition.cc -c -o/home/dm4/cachesim/build/src/core/model/unix-system-condition.cc.2.o",
+    "file": "../src/core/model/unix-system-condition.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/IdGenerator.cc -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/IdGenerator.cc.1.o",
+    "file": "../src/MultiCoreSim/model/src/IdGenerator.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/MCoreSimProject.cc -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/MCoreSimProject.cc.1.o",
+    "file": "../src/MultiCoreSim/model/src/MCoreSimProject.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/CpuCoreGenerator.cc -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/CpuCoreGenerator.cc.1.o",
+    "file": "../src/MultiCoreSim/model/src/CpuCoreGenerator.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/tinystr.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/tinystr.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/tinystr.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/tinyxml.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/tinyxml.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/tinyxml.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/tinyxmlerror.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/tinyxmlerror.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/tinyxmlerror.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/tinyxmlparser.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/tinyxmlparser.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/tinyxmlparser.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/FSMReader.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/FSMReader.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/FSMReader.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/CacheController.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/CacheController.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/CacheController.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/CacheControllerExclusive.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/CacheControllerExclusive.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/CacheControllerExclusive.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/CacheController_End2End.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/CacheController_End2End.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/CacheController_End2End.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Logger.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Logger.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Logger.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/CoherenceProtocolHandler.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/CoherenceProtocolHandler.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/CoherenceProtocolHandler.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/MSIProtocol.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/MSIProtocol.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/MSIProtocol.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/MESIProtocol.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/MESIProtocol.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/MESIProtocol.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/MOESIProtocol.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/MOESIProtocol.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/MOESIProtocol.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/PMSIProtocol.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/PMSIProtocol.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/PMSIProtocol.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/PMESIProtocol.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/PMESIProtocol.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/PMESIProtocol.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/PMSIAsteriskProtocol.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/PMSIAsteriskProtocol.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/PMSIAsteriskProtocol.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/PMESIAsteriskProtocol.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/PMESIAsteriskProtocol.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/PMESIAsteriskProtocol.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/LLCMSIProtocol.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/LLCMSIProtocol.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/LLCMSIProtocol.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/LLCMESIProtocol.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/LLCMESIProtocol.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/LLCMESIProtocol.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/LLCPMSIProtocol.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/LLCPMSIProtocol.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/LLCPMSIProtocol.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Protocols/LLCPMESIProtocol.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Protocols/LLCPMESIProtocol.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Protocols/LLCPMESIProtocol.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Interconnect/Bus.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Interconnect/Bus.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Interconnect/Bus.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Interconnect/TripleBus.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Interconnect/TripleBus.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Interconnect/TripleBus.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Interconnect/DirectInterconnect.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Interconnect/DirectInterconnect.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Interconnect/DirectInterconnect.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Interconnect/BusInterface.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Interconnect/BusInterface.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Interconnect/BusInterface.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Interconnect/TripleBusInterface.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Interconnect/TripleBusInterface.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Interconnect/TripleBusInterface.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Interconnect/BusController.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Interconnect/BusController.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Interconnect/BusController.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Interconnect/SplitBusController.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Interconnect/SplitBusController.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Interconnect/SplitBusController.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Interconnect/UnifiedBusController.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Interconnect/UnifiedBusController.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Interconnect/UnifiedBusController.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Interconnect/Point2PointController.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Interconnect/Point2PointController.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Interconnect/Point2PointController.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Interconnect/TripleBusController.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Interconnect/TripleBusController.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Interconnect/TripleBusController.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Interconnect/DirectController.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Interconnect/DirectController.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Interconnect/DirectController.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Arbiters/Arbiter.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Arbiters/Arbiter.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Arbiters/Arbiter.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Arbiters/TDMArbiter.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Arbiters/TDMArbiter.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Arbiters/TDMArbiter.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Arbiters/FCFSArbiter.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Arbiters/FCFSArbiter.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Arbiters/FCFSArbiter.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Arbiters/RRArbiter.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Arbiters/RRArbiter.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Arbiters/RRArbiter.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/Arbiters/RRFCFSArbiter.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/Arbiters/RRFCFSArbiter.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/Arbiters/RRFCFSArbiter.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/CacheDataHandler.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/CacheDataHandler.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/CacheDataHandler.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/GenericCacheLine.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/GenericCacheLine.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/GenericCacheLine.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/CacheDataHandler_COTS.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/CacheDataHandler_COTS.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/CacheDataHandler_COTS.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/MainMemoryController.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/MainMemoryController.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/MainMemoryController.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/ExternalCPU.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/ExternalCPU.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/ExternalCPU.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/CacheSim.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/CacheSim.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/CacheSim.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/ReplacementPolicies/Random.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/ReplacementPolicies/Random.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/ReplacementPolicies/Random.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -fPIC -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../src/MultiCoreSim/model/src/ReplacementPolicies/LeastRecentlyUsed.cpp -c -o/home/dm4/cachesim/build/src/MultiCoreSim/model/src/ReplacementPolicies/LeastRecentlyUsed.cpp.1.o",
+    "file": "../src/MultiCoreSim/model/src/ReplacementPolicies/LeastRecentlyUsed.cpp"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../scratch/MultiCoreSimulator.cc -c -o/home/dm4/cachesim/build/scratch/MultiCoreSimulator.cc.1.o",
+    "file": "../scratch/MultiCoreSimulator.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../utils/test-runner.cc -c -o/home/dm4/cachesim/build/utils/test-runner.cc.1.o",
+    "file": "../utils/test-runner.cc"
+  },
+  {
+    "directory": "/home/dm4/cachesim/build",
+    "command": "/usr/bin/g++ -O0 -ggdb -g3 -Wall -std=c++11 -pthread -I. -I.. -DNS3_BUILD_PROFILE_DEBUG -DNS3_ASSERT_ENABLE -DNS3_LOG_ENABLE ../utils/bench-simulator.cc -c -o/home/dm4/cachesim/build/utils/bench-simulator.cc.2.o",
+    "file": "../utils/bench-simulator.cc"
+  }
+]

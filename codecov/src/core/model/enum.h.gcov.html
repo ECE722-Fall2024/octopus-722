@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - filted3.info - src/core/model/enum.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">src/core/model</a> - enum.h<span style="font-size: 80%;"> (source / <a href="enum.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">filted3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryLo">40.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2021-03-27 06:55:54</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /* -*- Mode:C++; c-file-style:&quot;gnu&quot;; indent-tabs-mode:nil; -*- */</a>
+<a name="2"><span class="lineNum">       2 </span>            : /*</a>
+<a name="3"><span class="lineNum">       3 </span>            :  * Copyright (c) 2008 INRIA</a>
+<a name="4"><span class="lineNum">       4 </span>            :  *</a>
+<a name="5"><span class="lineNum">       5 </span>            :  * This program is free software; you can redistribute it and/or modify</a>
+<a name="6"><span class="lineNum">       6 </span>            :  * it under the terms of the GNU General Public License version 2 as</a>
+<a name="7"><span class="lineNum">       7 </span>            :  * published by the Free Software Foundation;</a>
+<a name="8"><span class="lineNum">       8 </span>            :  *</a>
+<a name="9"><span class="lineNum">       9 </span>            :  * This program is distributed in the hope that it will be useful,</a>
+<a name="10"><span class="lineNum">      10 </span>            :  * but WITHOUT ANY WARRANTY; without even the implied warranty of</a>
+<a name="11"><span class="lineNum">      11 </span>            :  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</a>
+<a name="12"><span class="lineNum">      12 </span>            :  * GNU General Public License for more details.</a>
+<a name="13"><span class="lineNum">      13 </span>            :  *</a>
+<a name="14"><span class="lineNum">      14 </span>            :  * You should have received a copy of the GNU General Public License</a>
+<a name="15"><span class="lineNum">      15 </span>            :  * along with this program; if not, write to the Free Software</a>
+<a name="16"><span class="lineNum">      16 </span>            :  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</a>
+<a name="17"><span class="lineNum">      17 </span>            :  *</a>
+<a name="18"><span class="lineNum">      18 </span>            :  * Authors: Mathieu Lacage &lt;mathieu.lacage@sophia.inria.fr&gt;</a>
+<a name="19"><span class="lineNum">      19 </span>            :  */</a>
+<a name="20"><span class="lineNum">      20 </span>            : #ifndef ENUM_VALUE_H</a>
+<a name="21"><span class="lineNum">      21 </span>            : #define ENUM_VALUE_H</a>
+<a name="22"><span class="lineNum">      22 </span>            : </a>
+<a name="23"><span class="lineNum">      23 </span>            : #include &quot;attribute.h&quot;</a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &quot;attribute-accessor-helper.h&quot;</a>
+<a name="25"><span class="lineNum">      25 </span>            : #include &lt;list&gt;</a>
+<a name="26"><span class="lineNum">      26 </span>            : </a>
+<a name="27"><span class="lineNum">      27 </span>            : /**</a>
+<a name="28"><span class="lineNum">      28 </span>            :  * \file</a>
+<a name="29"><span class="lineNum">      29 </span>            :  * \ingroup attribute_Enum</a>
+<a name="30"><span class="lineNum">      30 </span>            :  * ns3::EnumValue attribute value declarations.</a>
+<a name="31"><span class="lineNum">      31 </span>            :  */</a>
+<a name="32"><span class="lineNum">      32 </span>            : </a>
+<a name="33"><span class="lineNum">      33 </span>            : namespace ns3 {</a>
+<a name="34"><span class="lineNum">      34 </span>            : </a>
+<a name="35"><span class="lineNum">      35 </span>            : //  Additional docs for class EnumValue:</a>
+<a name="36"><span class="lineNum">      36 </span>            : /**</a>
+<a name="37"><span class="lineNum">      37 </span>            :  * Hold variables of type \c enum</a>
+<a name="38"><span class="lineNum">      38 </span>            :  *</a>
+<a name="39"><span class="lineNum">      39 </span>            :  * This class can be used to hold variables of any kind</a>
+<a name="40"><span class="lineNum">      40 </span>            :  * of enum.</a>
+<a name="41"><span class="lineNum">      41 </span>            :  *</a>
+<a name="42"><span class="lineNum">      42 </span>            :  * This is often used with ObjectFactory and Config to bind</a>
+<a name="43"><span class="lineNum">      43 </span>            :  * the value of a particular enum to an Attribute or Config name.</a>
+<a name="44"><span class="lineNum">      44 </span>            :  * For example,</a>
+<a name="45"><span class="lineNum">      45 </span>            :  * \code</a>
+<a name="46"><span class="lineNum">      46 </span>            :  *   Ptr&lt;RateErrorModel&gt; model = CreateObjectWithAttributes&lt;RateErrorModel&gt; (</a>
+<a name="47"><span class="lineNum">      47 </span>            :  *     &quot;ErrorRate&quot;, DoubleValue (0.05),</a>
+<a name="48"><span class="lineNum">      48 </span>            :  *     &quot;ErrorUnit&quot;, EnumValue (RateErrorModel::ERROR_UNIT_PACKET));</a>
+<a name="49"><span class="lineNum">      49 </span>            :  *</a>
+<a name="50"><span class="lineNum">      50 </span>            :  *   Config::SetDefault (&quot;ns3::RipNg::SplitHorizon&quot;,</a>
+<a name="51"><span class="lineNum">      51 </span>            :  *                       EnumValue (RipNg::NO_SPLIT_HORIZON));</a>
+<a name="52"><span class="lineNum">      52 </span>            :  * \endcode</a>
+<a name="53"><span class="lineNum">      53 </span>            :  */</a>
+<a name="54"><span class="lineNum">      54 </span>            : class EnumValue : public AttributeValue</a>
+<a name="55"><span class="lineNum">      55 </span>            : {</a>
+<a name="56"><span class="lineNum">      56 </span>            : public:</a>
+<a name="57"><span class="lineNum">      57 </span>            :   EnumValue ();</a>
+<a name="58"><span class="lineNum">      58 </span>            :   /**</a>
+<a name="59"><span class="lineNum">      59 </span>            :    * Construct from an explicit value.</a>
+<a name="60"><span class="lineNum">      60 </span>            :    *</a>
+<a name="61"><span class="lineNum">      61 </span>            :    * \param [in] value The value to begin with.</a>
+<a name="62"><span class="lineNum">      62 </span>            :    */</a>
+<a name="63"><span class="lineNum">      63 </span>            :   EnumValue (int value);</a>
+<a name="64"><span class="lineNum">      64 </span>            :   void Set (int  value);</a>
+<a name="65"><span class="lineNum">      65 </span>            :   int Get (void) const;</a>
+<a name="66"><span class="lineNum">      66 </span>            :   template &lt;typename T&gt;</a>
+<a name="67"><span class="lineNum">      67 </span>            :   bool GetAccessor (T &amp; value) const;</a>
+<a name="68"><span class="lineNum">      68 </span>            : </a>
+<a name="69"><span class="lineNum">      69 </span>            :   virtual Ptr&lt;AttributeValue&gt; Copy (void) const;</a>
+<a name="70"><span class="lineNum">      70 </span>            :   virtual std::string SerializeToString (Ptr&lt;const AttributeChecker&gt; checker) const;</a>
+<a name="71"><span class="lineNum">      71 </span>            :   virtual bool DeserializeFromString (std::string value, Ptr&lt;const AttributeChecker&gt; checker);</a>
+<a name="72"><span class="lineNum">      72 </span>            : </a>
+<a name="73"><span class="lineNum">      73 </span>            : private:</a>
+<a name="74"><span class="lineNum">      74 </span>            :   int m_value;  //!&lt; The stored integer value.</a>
+<a name="75"><span class="lineNum">      75 </span>            : };</a>
+<a name="76"><span class="lineNum">      76 </span>            : </a>
+<a name="77"><span class="lineNum">      77 </span>            : template &lt;typename T&gt;</a>
+<a name="78"><span class="lineNum">      78 </span>            : bool</a>
+<a name="79"><span class="lineNum">      79 </span><span class="lineNoCov">          0 : EnumValue::GetAccessor (T &amp;value) const</span></a>
+<a name="80"><span class="lineNum">      80 </span>            : {</a>
+<a name="81"><span class="lineNum">      81 </span><span class="lineNoCov">          0 :   value = T (m_value);</span></a>
+<a name="82"><span class="lineNum">      82 </span><span class="lineNoCov">          0 :   return true;</span></a>
+<a name="83"><span class="lineNum">      83 </span>            : }</a>
+<a name="84"><span class="lineNum">      84 </span>            : </a>
+<a name="85"><span class="lineNum">      85 </span>            : class EnumChecker : public AttributeChecker</a>
+<a name="86"><span class="lineNum">      86 </span>            : {</a>
+<a name="87"><span class="lineNum">      87 </span>            : public:</a>
+<a name="88"><span class="lineNum">      88 </span>            :   EnumChecker ();</a>
+<a name="89"><span class="lineNum">      89 </span>            : </a>
+<a name="90"><span class="lineNum">      90 </span>            :   /**</a>
+<a name="91"><span class="lineNum">      91 </span>            :    * Add a default value.</a>
+<a name="92"><span class="lineNum">      92 </span>            :    * \param [in] value The value.</a>
+<a name="93"><span class="lineNum">      93 </span>            :    * \param [in] name Then enum symbol name.</a>
+<a name="94"><span class="lineNum">      94 </span>            :    */</a>
+<a name="95"><span class="lineNum">      95 </span>            :   void AddDefault (int value, std::string name);</a>
+<a name="96"><span class="lineNum">      96 </span>            :   /**</a>
+<a name="97"><span class="lineNum">      97 </span>            :    * Add a new value.</a>
+<a name="98"><span class="lineNum">      98 </span>            :    * \param [in] value The value.</a>
+<a name="99"><span class="lineNum">      99 </span>            :    * \param [in] name Then enum symbol name.</a>
+<a name="100"><span class="lineNum">     100 </span>            :    */</a>
+<a name="101"><span class="lineNum">     101 </span>            :   void Add (int value, std::string name);</a>
+<a name="102"><span class="lineNum">     102 </span>            : </a>
+<a name="103"><span class="lineNum">     103 </span>            :   virtual bool Check (const AttributeValue &amp;value) const;</a>
+<a name="104"><span class="lineNum">     104 </span>            :   virtual std::string GetValueTypeName (void) const;</a>
+<a name="105"><span class="lineNum">     105 </span>            :   virtual bool HasUnderlyingTypeInformation (void) const;</a>
+<a name="106"><span class="lineNum">     106 </span>            :   virtual std::string GetUnderlyingTypeInformation (void) const;</a>
+<a name="107"><span class="lineNum">     107 </span>            :   virtual Ptr&lt;AttributeValue&gt; Create (void) const;</a>
+<a name="108"><span class="lineNum">     108 </span>            :   virtual bool Copy (const AttributeValue &amp;src, AttributeValue &amp;dst) const;</a>
+<a name="109"><span class="lineNum">     109 </span>            : </a>
+<a name="110"><span class="lineNum">     110 </span>            : private:</a>
+<a name="111"><span class="lineNum">     111 </span>            :   friend class EnumValue;</a>
+<a name="112"><span class="lineNum">     112 </span>            :   /** Type of container for storing Enum values and symbol names. */</a>
+<a name="113"><span class="lineNum">     113 </span>            :   typedef std::list&lt;std::pair&lt;int,std::string&gt; &gt; ValueSet;</a>
+<a name="114"><span class="lineNum">     114 </span>            :   /** The stored Enum values and symbol names. */</a>
+<a name="115"><span class="lineNum">     115 </span>            :   ValueSet m_valueSet;</a>
+<a name="116"><span class="lineNum">     116 </span>            : };</a>
+<a name="117"><span class="lineNum">     117 </span>            : </a>
+<a name="118"><span class="lineNum">     118 </span>            : template &lt;typename T1&gt;</a>
+<a name="119"><span class="lineNum">     119 </span>            : Ptr&lt;const AttributeAccessor&gt; MakeEnumAccessor (T1 a1);</a>
+<a name="120"><span class="lineNum">     120 </span>            : </a>
+<a name="121"><span class="lineNum">     121 </span>            : template &lt;typename T1, typename T2&gt;</a>
+<a name="122"><span class="lineNum">     122 </span>            : Ptr&lt;const AttributeAccessor&gt; MakeEnumAccessor (T1 a1, T2 a2);</a>
+<a name="123"><span class="lineNum">     123 </span>            : </a>
+<a name="124"><span class="lineNum">     124 </span>            : /**</a>
+<a name="125"><span class="lineNum">     125 </span>            :  * Make an EnumChecker pre-configured with a set of allowed</a>
+<a name="126"><span class="lineNum">     126 </span>            :  * values by name.</a>
+<a name="127"><span class="lineNum">     127 </span>            :  *</a>
+<a name="128"><span class="lineNum">     128 </span>            :  * Values are normally given as fully qualified enum symbols</a>
+<a name="129"><span class="lineNum">     129 </span>            :  * with matching names.  For example,</a>
+<a name="130"><span class="lineNum">     130 </span>            :  * \c MakeEnumChecker (RipNg::SPLIT_HORIZON, &quot;ns3::RipNg::SplitHorizon&quot;);</a>
+<a name="131"><span class="lineNum">     131 </span>            :  *</a>
+<a name="132"><span class="lineNum">     132 </span>            :  * \see AttributeChecker</a>
+<a name="133"><span class="lineNum">     133 </span>            :  *</a>
+<a name="134"><span class="lineNum">     134 </span>            :  * \returns The AttributeChecker</a>
+<a name="135"><span class="lineNum">     135 </span>            :  * \param [in] v1  An enum value</a>
+<a name="136"><span class="lineNum">     136 </span>            :  * \param [in] n1  The corresponding name.</a>
+<a name="137"><span class="lineNum">     137 </span>            :  * \param [in] v2  A enum value</a>
+<a name="138"><span class="lineNum">     138 </span>            :  * \param [in] n2  The corresponding name.</a>
+<a name="139"><span class="lineNum">     139 </span>            :  * \param [in] v3  A enum value</a>
+<a name="140"><span class="lineNum">     140 </span>            :  * \param [in] n3  The corresponding name.</a>
+<a name="141"><span class="lineNum">     141 </span>            :  * \param [in] v4  A enum value</a>
+<a name="142"><span class="lineNum">     142 </span>            :  * \param [in] n4  The corresponding name.</a>
+<a name="143"><span class="lineNum">     143 </span>            :  * \param [in] v5  A enum value</a>
+<a name="144"><span class="lineNum">     144 </span>            :  * \param [in] n5  The corresponding name.</a>
+<a name="145"><span class="lineNum">     145 </span>            :  * \param [in] v6  A enum value</a>
+<a name="146"><span class="lineNum">     146 </span>            :  * \param [in] n6  The corresponding name.</a>
+<a name="147"><span class="lineNum">     147 </span>            :  * \param [in] v7  A enum value</a>
+<a name="148"><span class="lineNum">     148 </span>            :  * \param [in] n7  The corresponding name.</a>
+<a name="149"><span class="lineNum">     149 </span>            :  * \param [in] v8  A enum value</a>
+<a name="150"><span class="lineNum">     150 </span>            :  * \param [in] n8  The corresponding name.</a>
+<a name="151"><span class="lineNum">     151 </span>            :  * \param [in] v9  A enum value</a>
+<a name="152"><span class="lineNum">     152 </span>            :  * \param [in] n9  The corresponding name.</a>
+<a name="153"><span class="lineNum">     153 </span>            :  * \param [in] v10 An enum value</a>
+<a name="154"><span class="lineNum">     154 </span>            :  * \param [in] n10 The enum name.</a>
+<a name="155"><span class="lineNum">     155 </span>            :  * \param [in] v11 An enum value</a>
+<a name="156"><span class="lineNum">     156 </span>            :  * \param [in] n11 The corresponding name.</a>
+<a name="157"><span class="lineNum">     157 </span>            :  * \param [in] v12 A enum value</a>
+<a name="158"><span class="lineNum">     158 </span>            :  * \param [in] n12 The corresponding name.</a>
+<a name="159"><span class="lineNum">     159 </span>            :  * \param [in] v13 A enum value</a>
+<a name="160"><span class="lineNum">     160 </span>            :  * \param [in] n13 The corresponding name.</a>
+<a name="161"><span class="lineNum">     161 </span>            :  * \param [in] v14 A enum value</a>
+<a name="162"><span class="lineNum">     162 </span>            :  * \param [in] n14 The corresponding name.</a>
+<a name="163"><span class="lineNum">     163 </span>            :  * \param [in] v15 A enum value</a>
+<a name="164"><span class="lineNum">     164 </span>            :  * \param [in] n15 The corresponding name.</a>
+<a name="165"><span class="lineNum">     165 </span>            :  * \param [in] v16 A enum value</a>
+<a name="166"><span class="lineNum">     166 </span>            :  * \param [in] n16 The corresponding name.</a>
+<a name="167"><span class="lineNum">     167 </span>            :  * \param [in] v17 A enum value</a>
+<a name="168"><span class="lineNum">     168 </span>            :  * \param [in] n17 The corresponding name.</a>
+<a name="169"><span class="lineNum">     169 </span>            :  * \param [in] v18 A enum value</a>
+<a name="170"><span class="lineNum">     170 </span>            :  * \param [in] n18 The corresponding name.</a>
+<a name="171"><span class="lineNum">     171 </span>            :  * \param [in] v19 A enum value</a>
+<a name="172"><span class="lineNum">     172 </span>            :  * \param [in] n19 The corresponding name.</a>
+<a name="173"><span class="lineNum">     173 </span>            :  * \param [in] v20 An enum value</a>
+<a name="174"><span class="lineNum">     174 </span>            :  * \param [in] n20 The enum name.</a>
+<a name="175"><span class="lineNum">     175 </span>            :  * \param [in] v21 An enum value</a>
+<a name="176"><span class="lineNum">     176 </span>            :  * \param [in] n21 The corresponding name.</a>
+<a name="177"><span class="lineNum">     177 </span>            :  * \param [in] v22 A enum value</a>
+<a name="178"><span class="lineNum">     178 </span>            :  * \param [in] n22 The corresponding name.</a>
+<a name="179"><span class="lineNum">     179 </span>            :  */ </a>
+<a name="180"><span class="lineNum">     180 </span>            : Ptr&lt;const AttributeChecker&gt; MakeEnumChecker (int v1, std::string n1,</a>
+<a name="181"><span class="lineNum">     181 </span>            :                                              int v2 = 0, std::string n2 = &quot;&quot;,</a>
+<a name="182"><span class="lineNum">     182 </span>            :                                              int v3 = 0, std::string n3 = &quot;&quot;,</a>
+<a name="183"><span class="lineNum">     183 </span>            :                                              int v4 = 0, std::string n4 = &quot;&quot;,</a>
+<a name="184"><span class="lineNum">     184 </span>            :                                              int v5 = 0, std::string n5 = &quot;&quot;,</a>
+<a name="185"><span class="lineNum">     185 </span>            :                                              int v6 = 0, std::string n6 = &quot;&quot;,</a>
+<a name="186"><span class="lineNum">     186 </span>            :                                              int v7 = 0, std::string n7 = &quot;&quot;,</a>
+<a name="187"><span class="lineNum">     187 </span>            :                                              int v8 = 0, std::string n8 = &quot;&quot;,</a>
+<a name="188"><span class="lineNum">     188 </span>            :                                              int v9 = 0, std::string n9 = &quot;&quot;,</a>
+<a name="189"><span class="lineNum">     189 </span>            :                                              int v10 = 0, std::string n10 = &quot;&quot;,</a>
+<a name="190"><span class="lineNum">     190 </span>            :                                              int v11 = 0, std::string n11 = &quot;&quot;,</a>
+<a name="191"><span class="lineNum">     191 </span>            :                                              int v12 = 0, std::string n12 = &quot;&quot;,</a>
+<a name="192"><span class="lineNum">     192 </span>            :                                              int v13 = 0, std::string n13 = &quot;&quot;,</a>
+<a name="193"><span class="lineNum">     193 </span>            :                                              int v14 = 0, std::string n14 = &quot;&quot;,</a>
+<a name="194"><span class="lineNum">     194 </span>            :                                              int v15 = 0, std::string n15 = &quot;&quot;,</a>
+<a name="195"><span class="lineNum">     195 </span>            :                                              int v16 = 0, std::string n16 = &quot;&quot;,</a>
+<a name="196"><span class="lineNum">     196 </span>            :                                              int v17 = 0, std::string n17 = &quot;&quot;,</a>
+<a name="197"><span class="lineNum">     197 </span>            :                                              int v18 = 0, std::string n18 = &quot;&quot;,</a>
+<a name="198"><span class="lineNum">     198 </span>            :                                              int v19 = 0, std::string n19 = &quot;&quot;,</a>
+<a name="199"><span class="lineNum">     199 </span>            :                                              int v20 = 0, std::string n20 = &quot;&quot;,</a>
+<a name="200"><span class="lineNum">     200 </span>            :                                              int v21 = 0, std::string n21 = &quot;&quot;,</a>
+<a name="201"><span class="lineNum">     201 </span>            :                                              int v22 = 0, std::string n22 = &quot;&quot;);</a>
+<a name="202"><span class="lineNum">     202 </span>            : </a>
+<a name="203"><span class="lineNum">     203 </span>            : </a>
+<a name="204"><span class="lineNum">     204 </span>            : } // namespace ns3</a>
+<a name="205"><span class="lineNum">     205 </span>            : </a>
+<a name="206"><span class="lineNum">     206 </span>            : namespace ns3 {</a>
+<a name="207"><span class="lineNum">     207 </span>            : </a>
+<a name="208"><span class="lineNum">     208 </span>            : template &lt;typename T1&gt;</a>
+<a name="209"><span class="lineNum">     209 </span><span class="lineCov">         35 : Ptr&lt;const AttributeAccessor&gt; MakeEnumAccessor (T1 a1)</span></a>
+<a name="210"><span class="lineNum">     210 </span>            : {</a>
+<a name="211"><span class="lineNum">     211 </span><span class="lineCov">         35 :   return MakeAccessorHelper&lt;EnumValue&gt; (a1);</span></a>
+<a name="212"><span class="lineNum">     212 </span>            : }</a>
+<a name="213"><span class="lineNum">     213 </span>            : </a>
+<a name="214"><span class="lineNum">     214 </span>            : template &lt;typename T1, typename T2&gt;</a>
+<a name="215"><span class="lineNum">     215 </span>            : Ptr&lt;const AttributeAccessor&gt; MakeEnumAccessor (T1 a1, T2 a2)</a>
+<a name="216"><span class="lineNum">     216 </span>            : {</a>
+<a name="217"><span class="lineNum">     217 </span>            :   return MakeAccessorHelper&lt;EnumValue&gt; (a1, a2);</a>
+<a name="218"><span class="lineNum">     218 </span>            : }</a>
+<a name="219"><span class="lineNum">     219 </span>            : </a>
+<a name="220"><span class="lineNum">     220 </span>            : } // namespace ns3</a>
+<a name="221"><span class="lineNum">     221 </span>            : </a>
+<a name="222"><span class="lineNum">     222 </span>            : #endif /* ENUM_VALUE_H */</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

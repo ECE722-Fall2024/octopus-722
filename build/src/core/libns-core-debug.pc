@@ -1,0 +1,10 @@
+prefix=/usr/local
+libdir=/usr/local/lib
+includedir=/usr/local/include/ns
+
+Name: libns3-core
+Description: ns-3 module ns3-core
+Version: 
+Libs: -L${libdir} -Wl,-Bdynamic -lns-core-debug -lrt
+Cflags: -I${includedir} -pthread
+Requires: 

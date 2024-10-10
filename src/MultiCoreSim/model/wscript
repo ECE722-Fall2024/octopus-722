@@ -1,0 +1,21 @@
+## -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
+
+def build(bld):    
+    obj = bld.create_ns3_program('MultiCoreSim', ['core'])
+    obj.source = [
+  'src/tinyxml.cpp',
+  'src/tinyxmlerror.cpp',
+  'src/tinyxmlparser.cpp',
+  'src/tinystr.cpp',
+  'src/MCoreSimProject.cc',
+  'src/CpuCoreGenerator.cc',
+  'src/PrivateCacheCtrl.cc',
+  'src/SharedCacheCtrl.cc',
+  'src/DRAMCtrl.cc',
+  'src/BusArbiter.cc',
+  'src/LatencyLogger.cc',
+  'src/IdGenerator.cc',
+	]
+
+
+

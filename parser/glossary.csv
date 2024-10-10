@@ -1,0 +1,36 @@
+label,value,level,description
+add2q_l,cycle,L1,L1: The message is added to the processing queue from the core
+add_req,cycle,L1,L1: the core's controller processes the message -> miss -> sends req to LLC
+add2q_l,cycle,LLC,LLC: The request message is added to the LLC's processing queue
+add_req,cycle,LLC,LLC miss -> LLC sends request to DRAM
+add2q_u,cycle,LLC,LLC: Refill message from RAM added to LLC's processing queue
+respond,cycle,LLC,LLC sends response message to the requesting L1
+datNrdy,cycle,LLC,LLC tries to update its data array but is blocked on arbitration
+dataRdy,cycle,LLC,LLC's finally elects the LLC's update to its data array
+updaDat,cycle,LLC,LLC updates its data array
+add2q_u,cycle,L1,L1 receives message from the bus
+respond,cycle,L1,L1 responds to core
+datNrdy,cycle,L1,L1 tries to update its data array but is blocked on arbitration
+dataRdy,cycle,L1,L1's finally elects the L1's update to its data array
+updaDat,cycle,L1,L1 attempts to update its data array
+wrCache,cycle,L1,L1 updates its data array (after any WB bottlenecks)
+replace,cycle,L1,L1 attempts to invalidate a message which is due to be evicted
+MSInrdy,cycle,L1,L1: Protocol determines message not ready to be processed
+MSIredy,cycle,L1,L1: Protocol determines message is now ready to be processed
+LLCnrdy,cycle,LLC,LLC: Protocol determines message not ready to be processed
+LLCredy,cycle,LLC,LLC: Protocol determines message is now ready to be processed
+hitActn,cycle,L1,L1: request is a hit
+hitActn,cycle,LLC,LLC: request is a hit
+add2q_r,cycle,L1,L1: replacement message for address added to processing queue
+add2q_r,cycle,LLC,LLC: replacement message for address added to processing queue
+termina,cycle,L1,L1: Message has no more actions to take in L1
+termina,cycle,LLC,LLC: Message has no more actions to take in LLC
+writeBk,cycle,L1,L1: Data is sent from one L1 cache to the requesting L1 cache
+writeBk,cycle,LLC,LLC: Data is written back from LLC
+wrCache,cycle,L1,L1: New data written to cache
+wrCache,cycle,LLC,LLC: New data written to cache
+L1WBsrc,sender message ID,L1,Describes the ID of the message which brought the data now being sent to the requesting core
+Miss?  ,boolean,L1,L1: Was the request a miss?
+Miss?  ,boolean,LLC,LLC: Was the request a miss?
+msgProc,cycle,L1,L1: message is taken from the L1's processing queue to be processed
+msgProc,cycle,LLC,LLC: message is taken from the LLC's processing queue to be processed

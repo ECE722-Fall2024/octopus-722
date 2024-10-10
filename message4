@@ -1,0 +1,15 @@
+4  140725477095880  add2q_l  L1: The message is added to the processing queue from the core                                3    9    cycle
+4  140725477095880  Miss?    L1: Was the request a miss?                                                                   3    1    boolean
+4  140725477095880  MSIredy  L1: Protocol determines message is now ready to be processed                                  3    9    cycle
+4  140725477095880  msgProc  L1: message is taken from the L1's processing queue to be processed                           3    9    cycle
+4  140725477095880  add_req  L1: the core's controller processes the message -> miss -> sends req to LLC                   3    9    cycle
+4  140725477095880  add2q_u  L1 receives message from the bus                                                              1    17   cycle
+4  140725477095880  add2q_u  L1 receives message from the bus                                                              2    17   cycle
+4  140725477095880  add2q_u  L1 receives message from the bus                                                              3    17   cycle
+4  140725477095880  add2q_u  L1 receives message from the bus                                                              0    17   cycle
+4  140725477095880  add2q_l  LLC: The request message is added to the LLC's processing queue                               LLC  17   cycle
+4  140725477095880  msgProc  LLC: message is taken from the LLC's processing queue to be processed                         LLC  268  cycle
+4  140725477095880  writeBk  L1: Data is sent from one L1 cache to the requesting L1 cache                                 2    283  cycle
+4  140725477095880  L1WBsrc  Describes the ID of the message which brought the data now being sent to the requesting core  2    3    sender message ID
+4  140725477095880  add2q_u  L1 receives message from the bus                                                              3    288  cycle
+4  140725477095880  respond  L1 responds to core                                                                           3    288  cycle

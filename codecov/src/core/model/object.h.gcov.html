@@ -1,0 +1,745 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - filted3.info - src/core/model/object.h</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">src/core/model</a> - object.h<span style="font-size: 80%;"> (source / <a href="object.h.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">filted3.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">22</td>
+            <td class="headerCovTableEntryLo">18.2 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2021-03-27 06:55:54</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntryLo">28.6 %</td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /* -*- Mode:C++; c-file-style:&quot;gnu&quot;; indent-tabs-mode:nil; -*- */</a>
+<a name="2"><span class="lineNum">       2 </span>            : /*</a>
+<a name="3"><span class="lineNum">       3 </span>            :  * Copyright (c) 2007 INRIA, Gustavo Carneiro</a>
+<a name="4"><span class="lineNum">       4 </span>            :  *</a>
+<a name="5"><span class="lineNum">       5 </span>            :  * This program is free software; you can redistribute it and/or modify</a>
+<a name="6"><span class="lineNum">       6 </span>            :  * it under the terms of the GNU General Public License version 2 as</a>
+<a name="7"><span class="lineNum">       7 </span>            :  * published by the Free Software Foundation;</a>
+<a name="8"><span class="lineNum">       8 </span>            :  *</a>
+<a name="9"><span class="lineNum">       9 </span>            :  * This program is distributed in the hope that it will be useful,</a>
+<a name="10"><span class="lineNum">      10 </span>            :  * but WITHOUT ANY WARRANTY; without even the implied warranty of</a>
+<a name="11"><span class="lineNum">      11 </span>            :  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</a>
+<a name="12"><span class="lineNum">      12 </span>            :  * GNU General Public License for more details.</a>
+<a name="13"><span class="lineNum">      13 </span>            :  *</a>
+<a name="14"><span class="lineNum">      14 </span>            :  * You should have received a copy of the GNU General Public License</a>
+<a name="15"><span class="lineNum">      15 </span>            :  * along with this program; if not, write to the Free Software</a>
+<a name="16"><span class="lineNum">      16 </span>            :  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</a>
+<a name="17"><span class="lineNum">      17 </span>            :  *</a>
+<a name="18"><span class="lineNum">      18 </span>            :  * Authors: Gustavo Carneiro &lt;gjcarneiro@gmail.com&gt;,</a>
+<a name="19"><span class="lineNum">      19 </span>            :  *          Mathieu Lacage &lt;mathieu.lacage@sophia.inria.fr&gt;</a>
+<a name="20"><span class="lineNum">      20 </span>            :  */</a>
+<a name="21"><span class="lineNum">      21 </span>            : #ifndef OBJECT_H</a>
+<a name="22"><span class="lineNum">      22 </span>            : #define OBJECT_H</a>
+<a name="23"><span class="lineNum">      23 </span>            : </a>
+<a name="24"><span class="lineNum">      24 </span>            : #include &lt;stdint.h&gt;</a>
+<a name="25"><span class="lineNum">      25 </span>            : #include &lt;string&gt;</a>
+<a name="26"><span class="lineNum">      26 </span>            : #include &lt;vector&gt;</a>
+<a name="27"><span class="lineNum">      27 </span>            : #include &quot;ptr.h&quot;</a>
+<a name="28"><span class="lineNum">      28 </span>            : #include &quot;attribute.h&quot;</a>
+<a name="29"><span class="lineNum">      29 </span>            : #include &quot;object-base.h&quot;</a>
+<a name="30"><span class="lineNum">      30 </span>            : #include &quot;attribute-construction-list.h&quot;</a>
+<a name="31"><span class="lineNum">      31 </span>            : #include &quot;simple-ref-count.h&quot;</a>
+<a name="32"><span class="lineNum">      32 </span>            : </a>
+<a name="33"><span class="lineNum">      33 </span>            : /**</a>
+<a name="34"><span class="lineNum">      34 </span>            :  * \file</a>
+<a name="35"><span class="lineNum">      35 </span>            :  * \ingroup object</a>
+<a name="36"><span class="lineNum">      36 </span>            :  * ns3::Object class declaration, which is the root of the Object hierarchy</a>
+<a name="37"><span class="lineNum">      37 </span>            :  * and Aggregation.</a>
+<a name="38"><span class="lineNum">      38 </span>            :  */</a>
+<a name="39"><span class="lineNum">      39 </span>            : </a>
+<a name="40"><span class="lineNum">      40 </span>            : namespace ns3 {</a>
+<a name="41"><span class="lineNum">      41 </span>            : </a>
+<a name="42"><span class="lineNum">      42 </span>            : class Object;</a>
+<a name="43"><span class="lineNum">      43 </span>            : class AttributeAccessor;</a>
+<a name="44"><span class="lineNum">      44 </span>            : class AttributeValue;</a>
+<a name="45"><span class="lineNum">      45 </span>            : class TraceSourceAccessor;</a>
+<a name="46"><span class="lineNum">      46 </span>            : </a>
+<a name="47"><span class="lineNum">      47 </span>            : /**</a>
+<a name="48"><span class="lineNum">      48 </span>            :  * \ingroup core</a>
+<a name="49"><span class="lineNum">      49 </span>            :  * \defgroup object Object</a>
+<a name="50"><span class="lineNum">      50 </span>            :  * \brief Base classes which provide memory management and object aggregation.</a>
+<a name="51"><span class="lineNum">      51 </span>            :  */</a>
+<a name="52"><span class="lineNum">      52 </span>            :   </a>
+<a name="53"><span class="lineNum">      53 </span>            : /**</a>
+<a name="54"><span class="lineNum">      54 </span>            :  * \ingroup object</a>
+<a name="55"><span class="lineNum">      55 </span>            :  * \ingroup ptr</a>
+<a name="56"><span class="lineNum">      56 </span>            :  * Standard Object deleter, used by SimpleRefCount</a>
+<a name="57"><span class="lineNum">      57 </span>            :  * to delete an Object when the reference count drops to zero.</a>
+<a name="58"><span class="lineNum">      58 </span>            :  */</a>
+<a name="59"><span class="lineNum">      59 </span>            : struct ObjectDeleter</a>
+<a name="60"><span class="lineNum">      60 </span>            : {</a>
+<a name="61"><span class="lineNum">      61 </span>            :   /**</a>
+<a name="62"><span class="lineNum">      62 </span>            :    * Smart pointer deleter implementation for Object.</a>
+<a name="63"><span class="lineNum">      63 </span>            :    *</a>
+<a name="64"><span class="lineNum">      64 </span>            :    * Delete implementation, forwards to the Object::DoDelete()</a>
+<a name="65"><span class="lineNum">      65 </span>            :    * method.</a>
+<a name="66"><span class="lineNum">      66 </span>            :    *</a>
+<a name="67"><span class="lineNum">      67 </span>            :    * \param [in] object The Object to delete.</a>
+<a name="68"><span class="lineNum">      68 </span>            :    */</a>
+<a name="69"><span class="lineNum">      69 </span>            :   inline static void Delete (Object *object);</a>
+<a name="70"><span class="lineNum">      70 </span>            : };</a>
+<a name="71"><span class="lineNum">      71 </span>            : </a>
+<a name="72"><span class="lineNum">      72 </span>            : /**</a>
+<a name="73"><span class="lineNum">      73 </span>            :  * \ingroup object</a>
+<a name="74"><span class="lineNum">      74 </span>            :  * \brief A base class which provides memory management and object aggregation</a>
+<a name="75"><span class="lineNum">      75 </span>            :  *</a>
+<a name="76"><span class="lineNum">      76 </span>            :  * The memory management scheme is based on reference-counting with</a>
+<a name="77"><span class="lineNum">      77 </span>            :  * dispose-like functionality to break the reference cycles.</a>
+<a name="78"><span class="lineNum">      78 </span>            :  * The reference count is incremented and decremented with</a>
+<a name="79"><span class="lineNum">      79 </span>            :  * the methods Ref() and Unref(). If a reference cycle is</a>
+<a name="80"><span class="lineNum">      80 </span>            :  * present, the user is responsible for breaking it</a>
+<a name="81"><span class="lineNum">      81 </span>            :  * by calling Dispose() in a single location. This will</a>
+<a name="82"><span class="lineNum">      82 </span>            :  * eventually trigger the invocation of DoDispose() on itself and</a>
+<a name="83"><span class="lineNum">      83 </span>            :  * all its aggregates. The DoDispose() method is always automatically</a>
+<a name="84"><span class="lineNum">      84 </span>            :  * invoked from the Unref() method before destroying the Object,</a>
+<a name="85"><span class="lineNum">      85 </span>            :  * even if the user did not call Dispose() directly.</a>
+<a name="86"><span class="lineNum">      86 </span>            :  */</a>
+<a name="87"><span class="lineNum">      87 </span>            : class Object : public SimpleRefCount&lt;Object, ObjectBase, ObjectDeleter&gt;</a>
+<a name="88"><span class="lineNum">      88 </span>            : {</a>
+<a name="89"><span class="lineNum">      89 </span>            : public:</a>
+<a name="90"><span class="lineNum">      90 </span>            :   /**</a>
+<a name="91"><span class="lineNum">      91 </span>            :    * \brief Register this type.</a>
+<a name="92"><span class="lineNum">      92 </span>            :    * \return The Object TypeId.</a>
+<a name="93"><span class="lineNum">      93 </span>            :    */</a>
+<a name="94"><span class="lineNum">      94 </span>            :   static TypeId GetTypeId (void);</a>
+<a name="95"><span class="lineNum">      95 </span>            : </a>
+<a name="96"><span class="lineNum">      96 </span>            :   /**</a>
+<a name="97"><span class="lineNum">      97 </span>            :    * \brief Iterate over the Objects aggregated to an ns3::Object.</a>
+<a name="98"><span class="lineNum">      98 </span>            :    *</a>
+<a name="99"><span class="lineNum">      99 </span>            :    * This iterator does not allow you to iterate over the parent</a>
+<a name="100"><span class="lineNum">     100 </span>            :    * Object used to call Object::GetAggregateIterator. </a>
+<a name="101"><span class="lineNum">     101 </span>            :    *</a>
+<a name="102"><span class="lineNum">     102 </span>            :    * \note This is a java-style iterator.</a>
+<a name="103"><span class="lineNum">     103 </span>            :    */</a>
+<a name="104"><span class="lineNum">     104 </span>            :   class AggregateIterator</a>
+<a name="105"><span class="lineNum">     105 </span>            :   {</a>
+<a name="106"><span class="lineNum">     106 </span>            : public:</a>
+<a name="107"><span class="lineNum">     107 </span>            :     /** Default constructor, which has no Object. */</a>
+<a name="108"><span class="lineNum">     108 </span>            :     AggregateIterator ();</a>
+<a name="109"><span class="lineNum">     109 </span>            : </a>
+<a name="110"><span class="lineNum">     110 </span>            :     /**</a>
+<a name="111"><span class="lineNum">     111 </span>            :      * Check if there are more Aggregates to iterate over.</a>
+<a name="112"><span class="lineNum">     112 </span>            :      *</a>
+<a name="113"><span class="lineNum">     113 </span>            :      * \returns \c true if Next() can be called and return a non-null</a>
+<a name="114"><span class="lineNum">     114 </span>            :      *          pointer, \c false otherwise.</a>
+<a name="115"><span class="lineNum">     115 </span>            :      */</a>
+<a name="116"><span class="lineNum">     116 </span>            :     bool HasNext (void) const;</a>
+<a name="117"><span class="lineNum">     117 </span>            : </a>
+<a name="118"><span class="lineNum">     118 </span>            :     /**</a>
+<a name="119"><span class="lineNum">     119 </span>            :      * Get the next Aggregated Object.</a>
+<a name="120"><span class="lineNum">     120 </span>            :      *</a>
+<a name="121"><span class="lineNum">     121 </span>            :      * \returns The next aggregated Object.</a>
+<a name="122"><span class="lineNum">     122 </span>            :      */</a>
+<a name="123"><span class="lineNum">     123 </span>            :     Ptr&lt;const Object&gt; Next (void);</a>
+<a name="124"><span class="lineNum">     124 </span>            : private:</a>
+<a name="125"><span class="lineNum">     125 </span>            :     friend class Object;</a>
+<a name="126"><span class="lineNum">     126 </span>            :     /**</a>
+<a name="127"><span class="lineNum">     127 </span>            :      * Construct from an Object.</a>
+<a name="128"><span class="lineNum">     128 </span>            :      *</a>
+<a name="129"><span class="lineNum">     129 </span>            :      * This is private, with Object as friend, so only Objects can create</a>
+<a name="130"><span class="lineNum">     130 </span>            :      * useful AggregateIterators.</a>
+<a name="131"><span class="lineNum">     131 </span>            :      *</a>
+<a name="132"><span class="lineNum">     132 </span>            :      * \param [in] object The Object whose Aggregates should be iterated over.</a>
+<a name="133"><span class="lineNum">     133 </span>            :      */</a>
+<a name="134"><span class="lineNum">     134 </span>            :     AggregateIterator (Ptr&lt;const Object&gt; object);</a>
+<a name="135"><span class="lineNum">     135 </span>            :     Ptr&lt;const Object&gt; m_object;                    //!&lt; Parent Object.</a>
+<a name="136"><span class="lineNum">     136 </span>            :     uint32_t m_current;                            //!&lt; Current position in parent's aggregates.</a>
+<a name="137"><span class="lineNum">     137 </span>            :   };</a>
+<a name="138"><span class="lineNum">     138 </span>            : </a>
+<a name="139"><span class="lineNum">     139 </span>            :   /** Constructor. */</a>
+<a name="140"><span class="lineNum">     140 </span>            :   Object ();</a>
+<a name="141"><span class="lineNum">     141 </span>            :   /** Destructor. */</a>
+<a name="142"><span class="lineNum">     142 </span>            :   virtual ~Object ();</a>
+<a name="143"><span class="lineNum">     143 </span>            : </a>
+<a name="144"><span class="lineNum">     144 </span>            :   virtual TypeId GetInstanceTypeId (void) const;</a>
+<a name="145"><span class="lineNum">     145 </span>            : </a>
+<a name="146"><span class="lineNum">     146 </span>            :   /**</a>
+<a name="147"><span class="lineNum">     147 </span>            :    * Get a pointer to the requested aggregated Object.</a>
+<a name="148"><span class="lineNum">     148 </span>            :    *</a>
+<a name="149"><span class="lineNum">     149 </span>            :    * \returns A pointer to the requested Object, or zero</a>
+<a name="150"><span class="lineNum">     150 </span>            :    *          if it could not be found.</a>
+<a name="151"><span class="lineNum">     151 </span>            :    */</a>
+<a name="152"><span class="lineNum">     152 </span>            :   template &lt;typename T&gt;</a>
+<a name="153"><span class="lineNum">     153 </span>            :   inline Ptr&lt;T&gt; GetObject (void) const;</a>
+<a name="154"><span class="lineNum">     154 </span>            :   /**</a>
+<a name="155"><span class="lineNum">     155 </span>            :    * Get a pointer to the requested aggregated Object by TypeId.</a>
+<a name="156"><span class="lineNum">     156 </span>            :    * </a>
+<a name="157"><span class="lineNum">     157 </span>            :    * \param [in] tid The TypeId of the requested Object.</a>
+<a name="158"><span class="lineNum">     158 </span>            :    * \returns A pointer to the requested Object, or zero</a>
+<a name="159"><span class="lineNum">     159 </span>            :    *          if it could not be found.</a>
+<a name="160"><span class="lineNum">     160 </span>            :    */</a>
+<a name="161"><span class="lineNum">     161 </span>            :   template &lt;typename T&gt;</a>
+<a name="162"><span class="lineNum">     162 </span>            :   Ptr&lt;T&gt; GetObject (TypeId tid) const;</a>
+<a name="163"><span class="lineNum">     163 </span>            :   /**</a>
+<a name="164"><span class="lineNum">     164 </span>            :    * Dispose of this Object.</a>
+<a name="165"><span class="lineNum">     165 </span>            :    *</a>
+<a name="166"><span class="lineNum">     166 </span>            :    * Run the DoDispose() methods of this Object and all the</a>
+<a name="167"><span class="lineNum">     167 </span>            :    * Objects aggregated to it.  </a>
+<a name="168"><span class="lineNum">     168 </span>            :    * After calling this method, this Object is expected to be</a>
+<a name="169"><span class="lineNum">     169 </span>            :    * totally unusable except for the Ref() and Unref() methods.</a>
+<a name="170"><span class="lineNum">     170 </span>            :    *</a>
+<a name="171"><span class="lineNum">     171 </span>            :    * \note You can call Dispose() many times on the same Object or</a>
+<a name="172"><span class="lineNum">     172 </span>            :    * different Objects aggregated together, and DoDispose() will be</a>
+<a name="173"><span class="lineNum">     173 </span>            :    * called only once for each aggregated Object.</a>
+<a name="174"><span class="lineNum">     174 </span>            :    *</a>
+<a name="175"><span class="lineNum">     175 </span>            :    * This method is typically used to break reference cycles.</a>
+<a name="176"><span class="lineNum">     176 </span>            :    */</a>
+<a name="177"><span class="lineNum">     177 </span>            :   void Dispose (void);</a>
+<a name="178"><span class="lineNum">     178 </span>            :   /**</a>
+<a name="179"><span class="lineNum">     179 </span>            :    * Aggregate two Objects together.</a>
+<a name="180"><span class="lineNum">     180 </span>            :    *</a>
+<a name="181"><span class="lineNum">     181 </span>            :    * \param [in] other The other Object pointer</a>
+<a name="182"><span class="lineNum">     182 </span>            :    *</a>
+<a name="183"><span class="lineNum">     183 </span>            :    * This method aggregates the two Objects together: after this</a>
+<a name="184"><span class="lineNum">     184 </span>            :    * method returns, it becomes possible to call GetObject()</a>
+<a name="185"><span class="lineNum">     185 </span>            :    * on one to get the other, and vice-versa. </a>
+<a name="186"><span class="lineNum">     186 </span>            :    *</a>
+<a name="187"><span class="lineNum">     187 </span>            :    * This method calls the virtual method NotifyNewAggregates() to</a>
+<a name="188"><span class="lineNum">     188 </span>            :    * notify all aggregated Objects that they have been aggregated</a>
+<a name="189"><span class="lineNum">     189 </span>            :    * together.</a>
+<a name="190"><span class="lineNum">     190 </span>            :    *</a>
+<a name="191"><span class="lineNum">     191 </span>            :    * \sa NotifyNewAggregate()</a>
+<a name="192"><span class="lineNum">     192 </span>            :    */</a>
+<a name="193"><span class="lineNum">     193 </span>            :   void AggregateObject (Ptr&lt;Object&gt; other);</a>
+<a name="194"><span class="lineNum">     194 </span>            : </a>
+<a name="195"><span class="lineNum">     195 </span>            :   /**</a>
+<a name="196"><span class="lineNum">     196 </span>            :    * Get an iterator to the Objects aggregated to this one.</a>
+<a name="197"><span class="lineNum">     197 </span>            :    *</a>
+<a name="198"><span class="lineNum">     198 </span>            :    * \returns An iterator to the first Object aggregated to this</a>
+<a name="199"><span class="lineNum">     199 </span>            :    *          Object.</a>
+<a name="200"><span class="lineNum">     200 </span>            :    *</a>
+<a name="201"><span class="lineNum">     201 </span>            :    * If no Objects are aggregated to this Object, then, the returned</a>
+<a name="202"><span class="lineNum">     202 </span>            :    * iterator will be empty and AggregateIterator::HasNext() will</a>
+<a name="203"><span class="lineNum">     203 </span>            :    * always return \c false.</a>
+<a name="204"><span class="lineNum">     204 </span>            :    */</a>
+<a name="205"><span class="lineNum">     205 </span>            :   AggregateIterator GetAggregateIterator (void) const;</a>
+<a name="206"><span class="lineNum">     206 </span>            : </a>
+<a name="207"><span class="lineNum">     207 </span>            :   /**</a>
+<a name="208"><span class="lineNum">     208 </span>            :    * Invoke DoInitialize on all Objects aggregated to this one.</a>
+<a name="209"><span class="lineNum">     209 </span>            :    *</a>
+<a name="210"><span class="lineNum">     210 </span>            :    * This method calls the virtual DoInitialize() method on all the Objects</a>
+<a name="211"><span class="lineNum">     211 </span>            :    * aggregated to this Object. DoInitialize() will be called only once over</a>
+<a name="212"><span class="lineNum">     212 </span>            :    * the lifetime of an Object, just like DoDispose() is called only</a>
+<a name="213"><span class="lineNum">     213 </span>            :    * once.</a>
+<a name="214"><span class="lineNum">     214 </span>            :    *</a>
+<a name="215"><span class="lineNum">     215 </span>            :    * \sa DoInitialize()</a>
+<a name="216"><span class="lineNum">     216 </span>            :    */</a>
+<a name="217"><span class="lineNum">     217 </span>            :   void Initialize (void);</a>
+<a name="218"><span class="lineNum">     218 </span>            : </a>
+<a name="219"><span class="lineNum">     219 </span>            :   /**</a>
+<a name="220"><span class="lineNum">     220 </span>            :    * Check if the object has been initialized.</a>
+<a name="221"><span class="lineNum">     221 </span>            :    *</a>
+<a name="222"><span class="lineNum">     222 </span>            :    * \brief returns true if the object has been initialized. </a>
+<a name="223"><span class="lineNum">     223 </span>            :    */</a>
+<a name="224"><span class="lineNum">     224 </span>            :   bool IsInitialized (void) const;</a>
+<a name="225"><span class="lineNum">     225 </span>            : </a>
+<a name="226"><span class="lineNum">     226 </span>            : protected:</a>
+<a name="227"><span class="lineNum">     227 </span>            :   /**</a>
+<a name="228"><span class="lineNum">     228 </span>            :    * Notify all Objects aggregated to this one of a new Object being</a>
+<a name="229"><span class="lineNum">     229 </span>            :    * aggregated.</a>
+<a name="230"><span class="lineNum">     230 </span>            :    *</a>
+<a name="231"><span class="lineNum">     231 </span>            :    * This method is invoked whenever two sets of Objects are aggregated</a>
+<a name="232"><span class="lineNum">     232 </span>            :    * together.  It is invoked exactly once for each Object in both sets.</a>
+<a name="233"><span class="lineNum">     233 </span>            :    * This method can be overridden by subclasses who wish to be notified</a>
+<a name="234"><span class="lineNum">     234 </span>            :    * of aggregation events. These subclasses must chain up to their</a>
+<a name="235"><span class="lineNum">     235 </span>            :    * base class NotifyNewAggregate() method.</a>
+<a name="236"><span class="lineNum">     236 </span>            :    *</a>
+<a name="237"><span class="lineNum">     237 </span>            :    * It is safe to call GetObject() and AggregateObject() from within</a>
+<a name="238"><span class="lineNum">     238 </span>            :    * this method.</a>
+<a name="239"><span class="lineNum">     239 </span>            :    */</a>
+<a name="240"><span class="lineNum">     240 </span>            :   virtual void NotifyNewAggregate (void);</a>
+<a name="241"><span class="lineNum">     241 </span>            :   /**</a>
+<a name="242"><span class="lineNum">     242 </span>            :    * Initialize() implementation.</a>
+<a name="243"><span class="lineNum">     243 </span>            :    *</a>
+<a name="244"><span class="lineNum">     244 </span>            :    * This method is called only once by Initialize(). If the user</a>
+<a name="245"><span class="lineNum">     245 </span>            :    * calls Initialize() multiple times, DoInitialize() is called only the</a>
+<a name="246"><span class="lineNum">     246 </span>            :    * first time.</a>
+<a name="247"><span class="lineNum">     247 </span>            :    *</a>
+<a name="248"><span class="lineNum">     248 </span>            :    * Subclasses are expected to override this method and chain up</a>
+<a name="249"><span class="lineNum">     249 </span>            :    * to their parent's implementation once they are done. It is</a>
+<a name="250"><span class="lineNum">     250 </span>            :    * safe to call GetObject() and AggregateObject() from within this method.</a>
+<a name="251"><span class="lineNum">     251 </span>            :    */</a>
+<a name="252"><span class="lineNum">     252 </span>            :   virtual void DoInitialize (void);</a>
+<a name="253"><span class="lineNum">     253 </span>            :   /**</a>
+<a name="254"><span class="lineNum">     254 </span>            :    * Destructor implementation.</a>
+<a name="255"><span class="lineNum">     255 </span>            :    *</a>
+<a name="256"><span class="lineNum">     256 </span>            :    * This method is called by Dispose() or by the Object's </a>
+<a name="257"><span class="lineNum">     257 </span>            :    * destructor, whichever comes first.</a>
+<a name="258"><span class="lineNum">     258 </span>            :    *</a>
+<a name="259"><span class="lineNum">     259 </span>            :    * Subclasses are expected to implement their real destruction</a>
+<a name="260"><span class="lineNum">     260 </span>            :    * code in an overridden version of this method and chain</a>
+<a name="261"><span class="lineNum">     261 </span>            :    * up to their parent's implementation once they are done.</a>
+<a name="262"><span class="lineNum">     262 </span>            :    * _i.e_, for simplicity, the destructor of every subclass should</a>
+<a name="263"><span class="lineNum">     263 </span>            :    * be empty and its content should be moved to the associated</a>
+<a name="264"><span class="lineNum">     264 </span>            :    * DoDispose() method.</a>
+<a name="265"><span class="lineNum">     265 </span>            :    *</a>
+<a name="266"><span class="lineNum">     266 </span>            :    * It is safe to call GetObject() from within this method.</a>
+<a name="267"><span class="lineNum">     267 </span>            :    */</a>
+<a name="268"><span class="lineNum">     268 </span>            :   virtual void DoDispose (void);</a>
+<a name="269"><span class="lineNum">     269 </span>            :   /**</a>
+<a name="270"><span class="lineNum">     270 </span>            :    * Copy an Object.</a>
+<a name="271"><span class="lineNum">     271 </span>            :    *</a>
+<a name="272"><span class="lineNum">     272 </span>            :    * \param [in] o the Object to copy.</a>
+<a name="273"><span class="lineNum">     273 </span>            :    *</a>
+<a name="274"><span class="lineNum">     274 </span>            :    * Allow subclasses to implement a copy constructor.</a>
+<a name="275"><span class="lineNum">     275 </span>            :    *</a>
+<a name="276"><span class="lineNum">     276 </span>            :    * While it is technically possible to implement a copy</a>
+<a name="277"><span class="lineNum">     277 </span>            :    * constructor in a subclass, we strongly discourage you</a>
+<a name="278"><span class="lineNum">     278 </span>            :    * from doing so. If you really want to do it anyway, you have</a>
+<a name="279"><span class="lineNum">     279 </span>            :    * to understand that this copy constructor will _not_</a>
+<a name="280"><span class="lineNum">     280 </span>            :    * copy aggregated Objects, _i.e_, if your Object instance</a>
+<a name="281"><span class="lineNum">     281 </span>            :    * is already aggregated to another Object and if you invoke</a>
+<a name="282"><span class="lineNum">     282 </span>            :    * this copy constructor, the new Object instance will be</a>
+<a name="283"><span class="lineNum">     283 </span>            :    * a pristine standalone Object instance not aggregated to</a>
+<a name="284"><span class="lineNum">     284 </span>            :    * any other Object. It is thus _your_ responsibility</a>
+<a name="285"><span class="lineNum">     285 </span>            :    * as a caller of this method to do what needs to be done</a>
+<a name="286"><span class="lineNum">     286 </span>            :    * (if it is needed) to ensure that the Object stays in a</a>
+<a name="287"><span class="lineNum">     287 </span>            :    * valid state.</a>
+<a name="288"><span class="lineNum">     288 </span>            :    */</a>
+<a name="289"><span class="lineNum">     289 </span>            :   Object (const Object &amp;o);</a>
+<a name="290"><span class="lineNum">     290 </span>            :   </a>
+<a name="291"><span class="lineNum">     291 </span>            : private:</a>
+<a name="292"><span class="lineNum">     292 </span>            : </a>
+<a name="293"><span class="lineNum">     293 </span>            :   /**</a>
+<a name="294"><span class="lineNum">     294 </span>            :    * Copy an Object.</a>
+<a name="295"><span class="lineNum">     295 </span>            :    *</a>
+<a name="296"><span class="lineNum">     296 </span>            :    * \param [in] object A pointer to the object to copy.</a>
+<a name="297"><span class="lineNum">     297 </span>            :    * \returns A copy of the input object.</a>
+<a name="298"><span class="lineNum">     298 </span>            :    *</a>
+<a name="299"><span class="lineNum">     299 </span>            :    * This method invoke the copy constructor of the input object</a>
+<a name="300"><span class="lineNum">     300 </span>            :    * and returns the new instance.</a>
+<a name="301"><span class="lineNum">     301 </span>            :    */</a>
+<a name="302"><span class="lineNum">     302 </span>            :   /**@{*/</a>
+<a name="303"><span class="lineNum">     303 </span>            :   template &lt;typename T&gt;</a>
+<a name="304"><span class="lineNum">     304 </span>            :   friend Ptr&lt;T&gt; CopyObject (Ptr&lt;T&gt; object);</a>
+<a name="305"><span class="lineNum">     305 </span>            :   template &lt;typename T&gt;</a>
+<a name="306"><span class="lineNum">     306 </span>            :   friend Ptr&lt;T&gt; CopyObject (Ptr&lt;const T&gt; object);</a>
+<a name="307"><span class="lineNum">     307 </span>            :   /**@}*/</a>
+<a name="308"><span class="lineNum">     308 </span>            :   </a>
+<a name="309"><span class="lineNum">     309 </span>            :   /**</a>
+<a name="310"><span class="lineNum">     310 </span>            :    * Set the TypeId and construct all Attributes of an Object.</a>
+<a name="311"><span class="lineNum">     311 </span>            :    *</a>
+<a name="312"><span class="lineNum">     312 </span>            :    * \tparam T \explicit The type of the derived object we are constructing.</a>
+<a name="313"><span class="lineNum">     313 </span>            :    * \param [in] object The uninitialized object pointer.</a>
+<a name="314"><span class="lineNum">     314 </span>            :    * \return The derived object.</a>
+<a name="315"><span class="lineNum">     315 </span>            :    */</a>
+<a name="316"><span class="lineNum">     316 </span>            :   template &lt;typename T&gt;</a>
+<a name="317"><span class="lineNum">     317 </span>            :   friend Ptr&lt;T&gt; CompleteConstruct (T *object);</a>
+<a name="318"><span class="lineNum">     318 </span>            : </a>
+<a name="319"><span class="lineNum">     319 </span>            :   friend class ObjectFactory;</a>
+<a name="320"><span class="lineNum">     320 </span>            :   friend class AggregateIterator;</a>
+<a name="321"><span class="lineNum">     321 </span>            :   friend struct ObjectDeleter;</a>
+<a name="322"><span class="lineNum">     322 </span>            : </a>
+<a name="323"><span class="lineNum">     323 </span>            :   /**</a>
+<a name="324"><span class="lineNum">     324 </span>            :    * The list of Objects aggregated to this one.</a>
+<a name="325"><span class="lineNum">     325 </span>            :    *</a>
+<a name="326"><span class="lineNum">     326 </span>            :    * This data structure uses a classic C-style trick to </a>
+<a name="327"><span class="lineNum">     327 </span>            :    * hold an array of variable size without performing</a>
+<a name="328"><span class="lineNum">     328 </span>            :    * two memory allocations: the declaration of the structure</a>
+<a name="329"><span class="lineNum">     329 </span>            :    * declares a one-element array but when we allocate</a>
+<a name="330"><span class="lineNum">     330 </span>            :    * memory for this struct, we effectively allocate a larger</a>
+<a name="331"><span class="lineNum">     331 </span>            :    * chunk of memory than the struct to allow space for a larger</a>
+<a name="332"><span class="lineNum">     332 </span>            :    * variable sized buffer whose size is indicated by the element</a>
+<a name="333"><span class="lineNum">     333 </span>            :    * \c n</a>
+<a name="334"><span class="lineNum">     334 </span>            :    */</a>
+<a name="335"><span class="lineNum">     335 </span>            :   struct Aggregates {</a>
+<a name="336"><span class="lineNum">     336 </span>            :     /** The number of entries in \c buffer. */</a>
+<a name="337"><span class="lineNum">     337 </span>            :     uint32_t n;</a>
+<a name="338"><span class="lineNum">     338 </span>            :     /** The array of Objects. */</a>
+<a name="339"><span class="lineNum">     339 </span>            :     Object *buffer[1];</a>
+<a name="340"><span class="lineNum">     340 </span>            :   };</a>
+<a name="341"><span class="lineNum">     341 </span>            : </a>
+<a name="342"><span class="lineNum">     342 </span>            :   /**</a>
+<a name="343"><span class="lineNum">     343 </span>            :    * Find an Object of TypeId tid in the aggregates of this Object.</a>
+<a name="344"><span class="lineNum">     344 </span>            :    *</a>
+<a name="345"><span class="lineNum">     345 </span>            :    * \param [in] tid The TypeId we're looking for</a>
+<a name="346"><span class="lineNum">     346 </span>            :    * \return The matching Object, if it is found</a>
+<a name="347"><span class="lineNum">     347 </span>            :    */</a>
+<a name="348"><span class="lineNum">     348 </span>            :   Ptr&lt;Object&gt; DoGetObject (TypeId tid) const;</a>
+<a name="349"><span class="lineNum">     349 </span>            :   /**</a>
+<a name="350"><span class="lineNum">     350 </span>            :    * Verify that this Object is still live, by checking it's reference count.</a>
+<a name="351"><span class="lineNum">     351 </span>            :    * \return \c true if the reference count is non zero.</a>
+<a name="352"><span class="lineNum">     352 </span>            :    */</a>
+<a name="353"><span class="lineNum">     353 </span>            :   bool Check (void) const;</a>
+<a name="354"><span class="lineNum">     354 </span>            :   /**</a>
+<a name="355"><span class="lineNum">     355 </span>            :    * Check if any aggregated Objects have non-zero reference counts.</a>
+<a name="356"><span class="lineNum">     356 </span>            :    *</a>
+<a name="357"><span class="lineNum">     357 </span>            :    * \return \c true if any of our aggregates have non zero reference count.</a>
+<a name="358"><span class="lineNum">     358 </span>            :    *</a>
+<a name="359"><span class="lineNum">     359 </span>            :    * In some cases, when an event is scheduled against a subclass of</a>
+<a name="360"><span class="lineNum">     360 </span>            :    * Object, and if no one owns a reference directly to this Object, the</a>
+<a name="361"><span class="lineNum">     361 </span>            :    * Object is alive, has a refcount of zero and the method run when the</a>
+<a name="362"><span class="lineNum">     362 </span>            :    * event expires runs against the raw pointer, which means that we are</a>
+<a name="363"><span class="lineNum">     363 </span>            :    * manipulating an Object with a refcount of zero.  So, instead we</a>
+<a name="364"><span class="lineNum">     364 </span>            :    * check the aggregate reference count.</a>
+<a name="365"><span class="lineNum">     365 </span>            :    */</a>
+<a name="366"><span class="lineNum">     366 </span>            :   bool CheckLoose (void) const;</a>
+<a name="367"><span class="lineNum">     367 </span>            :   /**</a>
+<a name="368"><span class="lineNum">     368 </span>            :    * Set the TypeId of this Object.</a>
+<a name="369"><span class="lineNum">     369 </span>            :    </a>
+<a name="370"><span class="lineNum">     370 </span>            :    * \param [in] tid The TypeId value to set.</a>
+<a name="371"><span class="lineNum">     371 </span>            :    *</a>
+<a name="372"><span class="lineNum">     372 </span>            :    * Invoked from ns3::CreateObject only.</a>
+<a name="373"><span class="lineNum">     373 </span>            :    * Initialize the \c m_tid member variable to</a>
+<a name="374"><span class="lineNum">     374 </span>            :    * keep track of the type of this Object instance.</a>
+<a name="375"><span class="lineNum">     375 </span>            :    */</a>
+<a name="376"><span class="lineNum">     376 </span>            :   void SetTypeId (TypeId tid);</a>
+<a name="377"><span class="lineNum">     377 </span>            :   /**</a>
+<a name="378"><span class="lineNum">     378 </span>            :    * Initialize all member variables registered as Attributes of this TypeId.</a>
+<a name="379"><span class="lineNum">     379 </span>            :    *</a>
+<a name="380"><span class="lineNum">     380 </span>            :    * \param [in] attributes The attribute values used to initialize</a>
+<a name="381"><span class="lineNum">     381 </span>            :    *        the member variables of this Object's instance.</a>
+<a name="382"><span class="lineNum">     382 </span>            :    *</a>
+<a name="383"><span class="lineNum">     383 </span>            :    * Invoked from ns3::ObjectFactory::Create and ns3::CreateObject only.</a>
+<a name="384"><span class="lineNum">     384 </span>            :    * Initialize all the member variables which were</a>
+<a name="385"><span class="lineNum">     385 </span>            :    * registered with the associated TypeId.</a>
+<a name="386"><span class="lineNum">     386 </span>            :   */</a>
+<a name="387"><span class="lineNum">     387 </span>            :   void Construct (const AttributeConstructionList &amp;attributes);</a>
+<a name="388"><span class="lineNum">     388 </span>            : </a>
+<a name="389"><span class="lineNum">     389 </span>            :   /**</a>
+<a name="390"><span class="lineNum">     390 </span>            :    * Keep the list of aggregates in most-recently-used order</a>
+<a name="391"><span class="lineNum">     391 </span>            :    *</a>
+<a name="392"><span class="lineNum">     392 </span>            :    * \param [in,out] aggregates The list of aggregated Objects.</a>
+<a name="393"><span class="lineNum">     393 </span>            :    * \param [in] i The most recently used entry in the list.</a>
+<a name="394"><span class="lineNum">     394 </span>            :    */</a>
+<a name="395"><span class="lineNum">     395 </span>            :   void UpdateSortedArray (struct Aggregates *aggregates, uint32_t i) const;</a>
+<a name="396"><span class="lineNum">     396 </span>            :   /**</a>
+<a name="397"><span class="lineNum">     397 </span>            :    * Attempt to delete this Object.</a>
+<a name="398"><span class="lineNum">     398 </span>            :    *</a>
+<a name="399"><span class="lineNum">     399 </span>            :    * This method iterates over all aggregated Objects to check if they all </a>
+<a name="400"><span class="lineNum">     400 </span>            :    * have a zero refcount. If yes, the Object and all</a>
+<a name="401"><span class="lineNum">     401 </span>            :    * its aggregates are deleted. If not, nothing is done.</a>
+<a name="402"><span class="lineNum">     402 </span>            :    */</a>
+<a name="403"><span class="lineNum">     403 </span>            :   void DoDelete (void);</a>
+<a name="404"><span class="lineNum">     404 </span>            : </a>
+<a name="405"><span class="lineNum">     405 </span>            :   /**</a>
+<a name="406"><span class="lineNum">     406 </span>            :    * Identifies the type of this Object instance.</a>
+<a name="407"><span class="lineNum">     407 </span>            :    */</a>
+<a name="408"><span class="lineNum">     408 </span>            :   TypeId m_tid;</a>
+<a name="409"><span class="lineNum">     409 </span>            :   /**</a>
+<a name="410"><span class="lineNum">     410 </span>            :    * Set to \c true when the DoDispose() method of the Object has run,</a>
+<a name="411"><span class="lineNum">     411 </span>            :    * \c false otherwise.</a>
+<a name="412"><span class="lineNum">     412 </span>            :    */</a>
+<a name="413"><span class="lineNum">     413 </span>            :   bool m_disposed;</a>
+<a name="414"><span class="lineNum">     414 </span>            :   /**</a>
+<a name="415"><span class="lineNum">     415 </span>            :    * Set to \c true once the DoInitialize() method has run,</a>
+<a name="416"><span class="lineNum">     416 </span>            :    * \c false otherwise</a>
+<a name="417"><span class="lineNum">     417 </span>            :    */</a>
+<a name="418"><span class="lineNum">     418 </span>            :   bool m_initialized;</a>
+<a name="419"><span class="lineNum">     419 </span>            :   /**</a>
+<a name="420"><span class="lineNum">     420 </span>            :    * A pointer to an array of 'aggregates'.</a>
+<a name="421"><span class="lineNum">     421 </span>            :    *</a>
+<a name="422"><span class="lineNum">     422 </span>            :    * A pointer to each Object aggregated to this Object is stored in this </a>
+<a name="423"><span class="lineNum">     423 </span>            :    * array.  The array is shared by all aggregated Objects</a>
+<a name="424"><span class="lineNum">     424 </span>            :    * so the size of the array is indirectly a reference count.</a>
+<a name="425"><span class="lineNum">     425 </span>            :    */</a>
+<a name="426"><span class="lineNum">     426 </span>            :   struct Aggregates * m_aggregates;</a>
+<a name="427"><span class="lineNum">     427 </span>            :   /**</a>
+<a name="428"><span class="lineNum">     428 </span>            :    * The number of times the Object was accessed with a</a>
+<a name="429"><span class="lineNum">     429 </span>            :    * call to GetObject().</a>
+<a name="430"><span class="lineNum">     430 </span>            :    *</a>
+<a name="431"><span class="lineNum">     431 </span>            :    * This integer is used to implement a heuristic to sort</a>
+<a name="432"><span class="lineNum">     432 </span>            :    * the array of aggregates in most-frequently accessed order.</a>
+<a name="433"><span class="lineNum">     433 </span>            :    */</a>
+<a name="434"><span class="lineNum">     434 </span>            :   uint32_t m_getObjectCount;</a>
+<a name="435"><span class="lineNum">     435 </span>            : };</a>
+<a name="436"><span class="lineNum">     436 </span>            : </a>
+<a name="437"><span class="lineNum">     437 </span>            : template &lt;typename T&gt;</a>
+<a name="438"><span class="lineNum">     438 </span>            : Ptr&lt;T&gt; CopyObject (Ptr&lt;const T&gt; object);</a>
+<a name="439"><span class="lineNum">     439 </span>            : template &lt;typename T&gt;</a>
+<a name="440"><span class="lineNum">     440 </span>            : Ptr&lt;T&gt; CopyObject (Ptr&lt;T&gt; object);</a>
+<a name="441"><span class="lineNum">     441 </span>            : </a>
+<a name="442"><span class="lineNum">     442 </span>            : } // namespace ns3</a>
+<a name="443"><span class="lineNum">     443 </span>            : </a>
+<a name="444"><span class="lineNum">     444 </span>            : namespace ns3 {</a>
+<a name="445"><span class="lineNum">     445 </span>            : </a>
+<a name="446"><span class="lineNum">     446 </span>            : </a>
+<a name="447"><span class="lineNum">     447 </span>            : /*************************************************************************</a>
+<a name="448"><span class="lineNum">     448 </span>            :  *   The Object implementation which depends on templates</a>
+<a name="449"><span class="lineNum">     449 </span>            :  *************************************************************************/</a>
+<a name="450"><span class="lineNum">     450 </span>            : </a>
+<a name="451"><span class="lineNum">     451 </span>            : void </a>
+<a name="452"><span class="lineNum">     452 </span><span class="lineNoCov">          0 : ObjectDeleter::Delete (Object *object)</span></a>
+<a name="453"><span class="lineNum">     453 </span>            : {</a>
+<a name="454"><span class="lineNum">     454 </span><span class="lineNoCov">          0 :   object-&gt;DoDelete ();</span></a>
+<a name="455"><span class="lineNum">     455 </span><span class="lineNoCov">          0 : }</span></a>
+<a name="456"><span class="lineNum">     456 </span>            : </a>
+<a name="457"><span class="lineNum">     457 </span>            : template &lt;typename T&gt;</a>
+<a name="458"><span class="lineNum">     458 </span>            : Ptr&lt;T&gt; </a>
+<a name="459"><span class="lineNum">     459 </span><span class="lineCov">         68 : Object::GetObject () const</span></a>
+<a name="460"><span class="lineNum">     460 </span>            : {</a>
+<a name="461"><span class="lineNum">     461 </span>            :   // This is an optimization: if the cast works (which is likely),</a>
+<a name="462"><span class="lineNum">     462 </span>            :   // things will be pretty fast.</a>
+<a name="463"><span class="lineNum">     463 </span><span class="lineCov">         68 :   T *result = dynamic_cast&lt;T *&gt; (m_aggregates-&gt;buffer[0]);</span></a>
+<a name="464"><span class="lineNum">     464 </span><span class="lineCov">         68 :   if (result != 0)</span></a>
+<a name="465"><span class="lineNum">     465 </span>            :     {</a>
+<a name="466"><span class="lineNum">     466 </span><span class="lineCov">         68 :       return Ptr&lt;T&gt; (result);</span></a>
+<a name="467"><span class="lineNum">     467 </span>            :     }</a>
+<a name="468"><span class="lineNum">     468 </span>            :   // if the cast does not work, we try to do a full type check.</a>
+<a name="469"><span class="lineNum">     469 </span><span class="lineNoCov">          0 :   Ptr&lt;Object&gt; found = DoGetObject (T::GetTypeId ());</span></a>
+<a name="470"><span class="lineNum">     470 </span><span class="lineNoCov">          0 :   if (found != 0)</span></a>
+<a name="471"><span class="lineNum">     471 </span>            :     {</a>
+<a name="472"><span class="lineNum">     472 </span><span class="lineNoCov">          0 :       return Ptr&lt;T&gt; (static_cast&lt;T *&gt; (PeekPointer (found)));</span></a>
+<a name="473"><span class="lineNum">     473 </span>            :     }</a>
+<a name="474"><span class="lineNum">     474 </span><span class="lineNoCov">          0 :   return 0;</span></a>
+<a name="475"><span class="lineNum">     475 </span>            : }</a>
+<a name="476"><span class="lineNum">     476 </span>            : </a>
+<a name="477"><span class="lineNum">     477 </span>            : template &lt;typename T&gt;</a>
+<a name="478"><span class="lineNum">     478 </span>            : Ptr&lt;T&gt; </a>
+<a name="479"><span class="lineNum">     479 </span><span class="lineNoCov">          0 : Object::GetObject (TypeId tid) const</span></a>
+<a name="480"><span class="lineNum">     480 </span>            : {</a>
+<a name="481"><span class="lineNum">     481 </span><span class="lineNoCov">          0 :   Ptr&lt;Object&gt; found = DoGetObject (tid);</span></a>
+<a name="482"><span class="lineNum">     482 </span><span class="lineNoCov">          0 :   if (found != 0)</span></a>
+<a name="483"><span class="lineNum">     483 </span>            :     {</a>
+<a name="484"><span class="lineNum">     484 </span><span class="lineNoCov">          0 :       return Ptr&lt;T&gt; (static_cast&lt;T *&gt; (PeekPointer (found)));</span></a>
+<a name="485"><span class="lineNum">     485 </span>            :     }</a>
+<a name="486"><span class="lineNum">     486 </span><span class="lineNoCov">          0 :   return 0;</span></a>
+<a name="487"><span class="lineNum">     487 </span>            : }</a>
+<a name="488"><span class="lineNum">     488 </span>            : </a>
+<a name="489"><span class="lineNum">     489 </span>            : /*************************************************************************</a>
+<a name="490"><span class="lineNum">     490 </span>            :  *   The helper functions which need templates.</a>
+<a name="491"><span class="lineNum">     491 </span>            :  *************************************************************************/</a>
+<a name="492"><span class="lineNum">     492 </span>            : </a>
+<a name="493"><span class="lineNum">     493 </span>            : template &lt;typename T&gt;</a>
+<a name="494"><span class="lineNum">     494 </span>            : Ptr&lt;T&gt; CopyObject (Ptr&lt;T&gt; object)</a>
+<a name="495"><span class="lineNum">     495 </span>            : {</a>
+<a name="496"><span class="lineNum">     496 </span>            :   Ptr&lt;T&gt; p = Ptr&lt;T&gt; (new T (*PeekPointer (object)), false);</a>
+<a name="497"><span class="lineNum">     497 </span>            :   NS_ASSERT (p-&gt;GetInstanceTypeId () == object-&gt;GetInstanceTypeId ());</a>
+<a name="498"><span class="lineNum">     498 </span>            :   return p;</a>
+<a name="499"><span class="lineNum">     499 </span>            : }</a>
+<a name="500"><span class="lineNum">     500 </span>            : </a>
+<a name="501"><span class="lineNum">     501 </span>            : template &lt;typename T&gt;</a>
+<a name="502"><span class="lineNum">     502 </span>            : Ptr&lt;T&gt; CopyObject (Ptr&lt;const T&gt; object)</a>
+<a name="503"><span class="lineNum">     503 </span>            : {</a>
+<a name="504"><span class="lineNum">     504 </span>            :   Ptr&lt;T&gt; p = Ptr&lt;T&gt; (new T (*PeekPointer (object)), false);</a>
+<a name="505"><span class="lineNum">     505 </span>            :   NS_ASSERT (p-&gt;GetInstanceTypeId () == object-&gt;GetInstanceTypeId ());</a>
+<a name="506"><span class="lineNum">     506 </span>            :   return p;</a>
+<a name="507"><span class="lineNum">     507 </span>            : }</a>
+<a name="508"><span class="lineNum">     508 </span>            : </a>
+<a name="509"><span class="lineNum">     509 </span>            : template &lt;typename T&gt;</a>
+<a name="510"><span class="lineNum">     510 </span><span class="lineNoCov">          0 : Ptr&lt;T&gt; CompleteConstruct (T *object)</span></a>
+<a name="511"><span class="lineNum">     511 </span>            : {</a>
+<a name="512"><span class="lineNum">     512 </span><span class="lineNoCov">          0 :   object-&gt;SetTypeId (T::GetTypeId ());</span></a>
+<a name="513"><span class="lineNum">     513 </span><span class="lineNoCov">          0 :   object-&gt;Object::Construct (AttributeConstructionList ());</span></a>
+<a name="514"><span class="lineNum">     514 </span><span class="lineNoCov">          0 :   return Ptr&lt;T&gt; (object, false);</span></a>
+<a name="515"><span class="lineNum">     515 </span>            : }</a>
+<a name="516"><span class="lineNum">     516 </span>            : </a>
+<a name="517"><span class="lineNum">     517 </span>            : /** </a>
+<a name="518"><span class="lineNum">     518 </span>            :  * \ingroup object</a>
+<a name="519"><span class="lineNum">     519 </span>            :  * @{</a>
+<a name="520"><span class="lineNum">     520 </span>            :  */</a>
+<a name="521"><span class="lineNum">     521 </span>            : /**</a>
+<a name="522"><span class="lineNum">     522 </span>            :  * Create an object by type, with varying number of constructor parameters.</a>
+<a name="523"><span class="lineNum">     523 </span>            :  *</a>
+<a name="524"><span class="lineNum">     524 </span>            :  * \tparam T \explicit The type of the derived object to construct.</a>
+<a name="525"><span class="lineNum">     525 </span>            :  * \return The derived object.</a>
+<a name="526"><span class="lineNum">     526 </span>            :  */</a>
+<a name="527"><span class="lineNum">     527 </span>            : template &lt;typename T&gt;</a>
+<a name="528"><span class="lineNum">     528 </span><span class="lineNoCov">          0 : Ptr&lt;T&gt; CreateObject (void)</span></a>
+<a name="529"><span class="lineNum">     529 </span>            : {</a>
+<a name="530"><span class="lineNum">     530 </span><span class="lineNoCov">          0 :   return CompleteConstruct (new T ());</span></a>
+<a name="531"><span class="lineNum">     531 </span>            : }</a>
+<a name="532"><span class="lineNum">     532 </span>            : /**</a>
+<a name="533"><span class="lineNum">     533 </span>            :  * \copybrief CreateObject()</a>
+<a name="534"><span class="lineNum">     534 </span>            :  * \tparam T \explicit The type of the derived object to construct.</a>
+<a name="535"><span class="lineNum">     535 </span>            :  * \tparam T1 \deduced The type of the constructor argument.</a>
+<a name="536"><span class="lineNum">     536 </span>            :  * \param [in] a1 The constructor argument</a>
+<a name="537"><span class="lineNum">     537 </span>            :  * \return The derived object.</a>
+<a name="538"><span class="lineNum">     538 </span>            :  */</a>
+<a name="539"><span class="lineNum">     539 </span>            : template &lt;typename T, typename T1&gt;</a>
+<a name="540"><span class="lineNum">     540 </span>            : Ptr&lt;T&gt; CreateObject (T1 a1)</a>
+<a name="541"><span class="lineNum">     541 </span>            : {</a>
+<a name="542"><span class="lineNum">     542 </span>            :   return CompleteConstruct (new T (a1));</a>
+<a name="543"><span class="lineNum">     543 </span>            : }</a>
+<a name="544"><span class="lineNum">     544 </span>            : </a>
+<a name="545"><span class="lineNum">     545 </span>            : /**</a>
+<a name="546"><span class="lineNum">     546 </span>            :  * \copybrief CreateObject()</a>
+<a name="547"><span class="lineNum">     547 </span>            :  * \tparam T \explicit The type of the derived object to construct.</a>
+<a name="548"><span class="lineNum">     548 </span>            :  * \tparam T1 \deduced The type of the first constructor argument.</a>
+<a name="549"><span class="lineNum">     549 </span>            :  * \tparam T2 \deduced The type of the second constructor argument.</a>
+<a name="550"><span class="lineNum">     550 </span>            :  * \param [in] a1 The constructor first argument</a>
+<a name="551"><span class="lineNum">     551 </span>            :  * \param [in] a2 The constructor second argument</a>
+<a name="552"><span class="lineNum">     552 </span>            :  * \return The derived object.</a>
+<a name="553"><span class="lineNum">     553 </span>            :  */</a>
+<a name="554"><span class="lineNum">     554 </span>            : template &lt;typename T, typename T1, typename T2&gt;</a>
+<a name="555"><span class="lineNum">     555 </span>            : Ptr&lt;T&gt; CreateObject (T1 a1, T2 a2)</a>
+<a name="556"><span class="lineNum">     556 </span>            : {</a>
+<a name="557"><span class="lineNum">     557 </span>            :   return CompleteConstruct (new T (a1,a2));</a>
+<a name="558"><span class="lineNum">     558 </span>            : }</a>
+<a name="559"><span class="lineNum">     559 </span>            : </a>
+<a name="560"><span class="lineNum">     560 </span>            : /**</a>
+<a name="561"><span class="lineNum">     561 </span>            :  * \copybrief CreateObject()</a>
+<a name="562"><span class="lineNum">     562 </span>            :  * \tparam T \explicit The type of the derived object to construct.</a>
+<a name="563"><span class="lineNum">     563 </span>            :  * \tparam T1 \deduced The type of the first constructor argument.</a>
+<a name="564"><span class="lineNum">     564 </span>            :  * \tparam T2 \deduced The type of the second constructor argument.</a>
+<a name="565"><span class="lineNum">     565 </span>            :  * \tparam T3 \deduced The type of the third constructor argument.</a>
+<a name="566"><span class="lineNum">     566 </span>            :  * \param [in] a1 The constructor first argument</a>
+<a name="567"><span class="lineNum">     567 </span>            :  * \param [in] a2 The constructor second argument</a>
+<a name="568"><span class="lineNum">     568 </span>            :  * \param [in] a3 The constructor third argument</a>
+<a name="569"><span class="lineNum">     569 </span>            :  * \return The derived object.</a>
+<a name="570"><span class="lineNum">     570 </span>            :  */</a>
+<a name="571"><span class="lineNum">     571 </span>            : template &lt;typename T, typename T1, typename T2, typename T3&gt;</a>
+<a name="572"><span class="lineNum">     572 </span>            : Ptr&lt;T&gt; CreateObject (T1 a1, T2 a2, T3 a3)</a>
+<a name="573"><span class="lineNum">     573 </span>            : {</a>
+<a name="574"><span class="lineNum">     574 </span>            :   return CompleteConstruct (new T (a1,a2,a3));</a>
+<a name="575"><span class="lineNum">     575 </span>            : }</a>
+<a name="576"><span class="lineNum">     576 </span>            : </a>
+<a name="577"><span class="lineNum">     577 </span>            : /**</a>
+<a name="578"><span class="lineNum">     578 </span>            :  * \copybrief CreateObject()</a>
+<a name="579"><span class="lineNum">     579 </span>            :  * \tparam T \explicit The type of the derived object to construct.</a>
+<a name="580"><span class="lineNum">     580 </span>            :  * \tparam T1 \deduced The type of the first constructor argument.</a>
+<a name="581"><span class="lineNum">     581 </span>            :  * \tparam T2 \deduced The type of the second constructor argument.</a>
+<a name="582"><span class="lineNum">     582 </span>            :  * \tparam T3 \deduced The type of the third constructor argument.</a>
+<a name="583"><span class="lineNum">     583 </span>            :  * \tparam T4 \deduced The type of the fourth constructor argument.</a>
+<a name="584"><span class="lineNum">     584 </span>            :  * \param [in] a1 The constructor first argument</a>
+<a name="585"><span class="lineNum">     585 </span>            :  * \param [in] a2 The constructor second argument</a>
+<a name="586"><span class="lineNum">     586 </span>            :  * \param [in] a3 The constructor third argument</a>
+<a name="587"><span class="lineNum">     587 </span>            :  * \param [in] a4 The constructor fourth argument</a>
+<a name="588"><span class="lineNum">     588 </span>            :  * \return The derived object.</a>
+<a name="589"><span class="lineNum">     589 </span>            :  */</a>
+<a name="590"><span class="lineNum">     590 </span>            : template &lt;typename T, typename T1, typename T2, typename T3, typename T4&gt;</a>
+<a name="591"><span class="lineNum">     591 </span>            : Ptr&lt;T&gt; CreateObject (T1 a1, T2 a2, T3 a3, T4 a4)</a>
+<a name="592"><span class="lineNum">     592 </span>            : {</a>
+<a name="593"><span class="lineNum">     593 </span>            :   return CompleteConstruct (new T (a1,a2,a3,a4));</a>
+<a name="594"><span class="lineNum">     594 </span>            : }</a>
+<a name="595"><span class="lineNum">     595 </span>            : </a>
+<a name="596"><span class="lineNum">     596 </span>            : /**</a>
+<a name="597"><span class="lineNum">     597 </span>            :  * \copybrief CreateObject()</a>
+<a name="598"><span class="lineNum">     598 </span>            :  * \tparam T \explicit The type of the derived object to construct.</a>
+<a name="599"><span class="lineNum">     599 </span>            :  * \tparam T1 \deduced The type of the first constructor argument.</a>
+<a name="600"><span class="lineNum">     600 </span>            :  * \tparam T2 \deduced The type of the second constructor argument.</a>
+<a name="601"><span class="lineNum">     601 </span>            :  * \tparam T3 \deduced The type of the third constructor argument.</a>
+<a name="602"><span class="lineNum">     602 </span>            :  * \tparam T4 \deduced The type of the fourth constructor argument.</a>
+<a name="603"><span class="lineNum">     603 </span>            :  * \tparam T5 \deduced The type of the fifth constructor argument.</a>
+<a name="604"><span class="lineNum">     604 </span>            :  * \param [in] a1 The constructor first argument</a>
+<a name="605"><span class="lineNum">     605 </span>            :  * \param [in] a2 The constructor second argument</a>
+<a name="606"><span class="lineNum">     606 </span>            :  * \param [in] a3 The constructor third argument</a>
+<a name="607"><span class="lineNum">     607 </span>            :  * \param [in] a4 The constructor fourth argument</a>
+<a name="608"><span class="lineNum">     608 </span>            :  * \param [in] a5 The constructor fifth argument</a>
+<a name="609"><span class="lineNum">     609 </span>            :  * \return The derived object.</a>
+<a name="610"><span class="lineNum">     610 </span>            :  */</a>
+<a name="611"><span class="lineNum">     611 </span>            : template &lt;typename T, typename T1, typename T2, typename T3, typename T4, typename T5&gt;</a>
+<a name="612"><span class="lineNum">     612 </span>            : Ptr&lt;T&gt; CreateObject (T1 a1, T2 a2, T3 a3, T4 a4, T5 a5)</a>
+<a name="613"><span class="lineNum">     613 </span>            : {</a>
+<a name="614"><span class="lineNum">     614 </span>            :   return CompleteConstruct (new T (a1,a2,a3,a4,a5));</a>
+<a name="615"><span class="lineNum">     615 </span>            : }</a>
+<a name="616"><span class="lineNum">     616 </span>            : </a>
+<a name="617"><span class="lineNum">     617 </span>            : /**</a>
+<a name="618"><span class="lineNum">     618 </span>            :  * \copybrief CreateObject()</a>
+<a name="619"><span class="lineNum">     619 </span>            :  * \tparam T \explicit The type of the derived object to construct.</a>
+<a name="620"><span class="lineNum">     620 </span>            :  * \tparam T1 \deduced The type of the first constructor argument.</a>
+<a name="621"><span class="lineNum">     621 </span>            :  * \tparam T2 \deduced The type of the second constructor argument.</a>
+<a name="622"><span class="lineNum">     622 </span>            :  * \tparam T3 \deduced The type of the third constructor argument.</a>
+<a name="623"><span class="lineNum">     623 </span>            :  * \tparam T4 \deduced The type of the fourth constructor argument.</a>
+<a name="624"><span class="lineNum">     624 </span>            :  * \tparam T5 \deduced The type of the fifth constructor argument.</a>
+<a name="625"><span class="lineNum">     625 </span>            :  * \tparam T6 \deduced The type of the sixth constructor argument.</a>
+<a name="626"><span class="lineNum">     626 </span>            :  * \param [in] a1 The constructor first argument</a>
+<a name="627"><span class="lineNum">     627 </span>            :  * \param [in] a2 The constructor second argument</a>
+<a name="628"><span class="lineNum">     628 </span>            :  * \param [in] a3 The constructor third argument</a>
+<a name="629"><span class="lineNum">     629 </span>            :  * \param [in] a4 The constructor fourth argument</a>
+<a name="630"><span class="lineNum">     630 </span>            :  * \param [in] a5 The constructor fifth argument</a>
+<a name="631"><span class="lineNum">     631 </span>            :  * \param [in] a6 The constructor sixth argument</a>
+<a name="632"><span class="lineNum">     632 </span>            :  * \return The derived object.</a>
+<a name="633"><span class="lineNum">     633 </span>            :  */</a>
+<a name="634"><span class="lineNum">     634 </span>            : template &lt;typename T, typename T1, typename T2, typename T3, typename T4, typename T5, typename T6&gt;</a>
+<a name="635"><span class="lineNum">     635 </span>            : Ptr&lt;T&gt; CreateObject (T1 a1, T2 a2, T3 a3, T4 a4, T5 a5, T6 a6)</a>
+<a name="636"><span class="lineNum">     636 </span>            : {</a>
+<a name="637"><span class="lineNum">     637 </span>            :   return CompleteConstruct (new T (a1,a2,a3,a4,a5,a6));</a>
+<a name="638"><span class="lineNum">     638 </span>            : }</a>
+<a name="639"><span class="lineNum">     639 </span>            : </a>
+<a name="640"><span class="lineNum">     640 </span>            : /**</a>
+<a name="641"><span class="lineNum">     641 </span>            :  * \copybrief CreateObject()</a>
+<a name="642"><span class="lineNum">     642 </span>            :  * \tparam T \explicit The type of the derived object to construct.</a>
+<a name="643"><span class="lineNum">     643 </span>            :  * \tparam T1 \deduced The type of the first constructor argument.</a>
+<a name="644"><span class="lineNum">     644 </span>            :  * \tparam T2 \deduced The type of the second constructor argument.</a>
+<a name="645"><span class="lineNum">     645 </span>            :  * \tparam T3 \deduced The type of the third constructor argument.</a>
+<a name="646"><span class="lineNum">     646 </span>            :  * \tparam T4 \deduced The type of the fourth constructor argument.</a>
+<a name="647"><span class="lineNum">     647 </span>            :  * \tparam T5 \deduced The type of the fifth constructor argument.</a>
+<a name="648"><span class="lineNum">     648 </span>            :  * \tparam T6 \deduced The type of the sixth constructor argument.</a>
+<a name="649"><span class="lineNum">     649 </span>            :  * \tparam T7 \deduced The type of the seventh constructor argument.</a>
+<a name="650"><span class="lineNum">     650 </span>            :  * \param [in] a1 The constructor first argument</a>
+<a name="651"><span class="lineNum">     651 </span>            :  * \param [in] a2 The constructor second argument</a>
+<a name="652"><span class="lineNum">     652 </span>            :  * \param [in] a3 The constructor third argument</a>
+<a name="653"><span class="lineNum">     653 </span>            :  * \param [in] a4 The constructor fourth argument</a>
+<a name="654"><span class="lineNum">     654 </span>            :  * \param [in] a5 The constructor fifth argument</a>
+<a name="655"><span class="lineNum">     655 </span>            :  * \param [in] a6 The constructor sixth argument</a>
+<a name="656"><span class="lineNum">     656 </span>            :  * \param [in] a7 The constructor seventh argument</a>
+<a name="657"><span class="lineNum">     657 </span>            :  * \return The derived object.</a>
+<a name="658"><span class="lineNum">     658 </span>            :  */</a>
+<a name="659"><span class="lineNum">     659 </span>            : template &lt;typename T, typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7&gt;</a>
+<a name="660"><span class="lineNum">     660 </span>            : Ptr&lt;T&gt; CreateObject (T1 a1, T2 a2, T3 a3, T4 a4, T5 a5, T6 a6, T7 a7)</a>
+<a name="661"><span class="lineNum">     661 </span>            : {</a>
+<a name="662"><span class="lineNum">     662 </span>            :   return CompleteConstruct (new T (a1,a2,a3,a4,a5,a6,a7));</a>
+<a name="663"><span class="lineNum">     663 </span>            : }</a>
+<a name="664"><span class="lineNum">     664 </span>            : /**@}*/</a>
+<a name="665"><span class="lineNum">     665 </span>            : </a>
+<a name="666"><span class="lineNum">     666 </span>            : } // namespace ns3</a>
+<a name="667"><span class="lineNum">     667 </span>            : </a>
+<a name="668"><span class="lineNum">     668 </span>            : #endif /* OBJECT_H */</a>
+<a name="669"><span class="lineNum">     669 </span>            : </a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.14</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+# -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
+
+# def options(opt):
+#     pass
+
+# def configure(conf):
+#     conf.check_nonfatal(header_name='stdint.h', define_name='HAVE_STDINT_H')
+#     conf.check(lib=["libmcsim.a"])
+
+def build(bld):
+    module = bld.create_ns3_module('MultiCoreSim', ['core',])
+    module.source = [
+        'model/src/IdGenerator.cc',
+    	'model/src/MCoreSimProject.cc',
+        'model/src/CpuCoreGenerator.cc',
+    	'model/src/tinystr.cpp',
+    	'model/src/tinyxml.cpp',
+    	'model/src/tinyxmlerror.cpp',
+    	'model/src/tinyxmlparser.cpp',
+        'model/src/FSMReader.cpp',
+        'model/src/CacheController.cpp',
+        'model/src/CacheControllerExclusive.cpp',
+        'model/src/CacheController_End2End.cpp',
+        'model/src/Logger.cpp',
+        'model/src/Protocols/CoherenceProtocolHandler.cpp',
+        'model/src/Protocols/MSIProtocol.cpp',
+        'model/src/Protocols/MESIProtocol.cpp',
+        'model/src/Protocols/MOESIProtocol.cpp',
+        'model/src/Protocols/PMSIProtocol.cpp',
+        'model/src/Protocols/PMESIProtocol.cpp',
+        'model/src/Protocols/PMSIAsteriskProtocol.cpp',
+        'model/src/Protocols/PMESIAsteriskProtocol.cpp',
+        'model/src/Protocols/LLCMSIProtocol.cpp',
+        'model/src/Protocols/LLCMESIProtocol.cpp',
+        'model/src/Protocols/LLCPMSIProtocol.cpp',
+        'model/src/Protocols/LLCPMESIProtocol.cpp',
+        'model/src/Interconnect/Bus.cpp',
+        'model/src/Interconnect/TripleBus.cpp',
+        'model/src/Interconnect/DirectInterconnect.cpp',
+        'model/src/Interconnect/BusInterface.cpp',
+        'model/src/Interconnect/TripleBusInterface.cpp',
+        'model/src/Interconnect/BusController.cpp',
+        'model/src/Interconnect/SplitBusController.cpp',
+        'model/src/Interconnect/UnifiedBusController.cpp',
+        'model/src/Interconnect/Point2PointController.cpp',
+        'model/src/Interconnect/TripleBusController.cpp',
+        'model/src/Interconnect/DirectController.cpp',
+        'model/src/Arbiters/Arbiter.cpp',
+        'model/src/Arbiters/TDMArbiter.cpp',
+        'model/src/Arbiters/FCFSArbiter.cpp',
+        'model/src/Arbiters/RRArbiter.cpp',
+        'model/src/Arbiters/RRFCFSArbiter.cpp',
+        'model/src/CacheDataHandler.cpp',
+        'model/src/GenericCacheLine.cpp',
+        'model/src/CacheDataHandler_COTS.cpp',
+        'model/src/MainMemoryController.cpp',
+        # 'model/src/MCsimInterface.cpp',
+        'model/src/ExternalCPU.cpp',
+        'model/src/CacheSim.cpp',
+        'model/src/ReplacementPolicies/Random.cpp',
+        'model/src/ReplacementPolicies/LeastRecentlyUsed.cpp',
+        ]
+    #module.includes = [module.includes, '/Users/Mhossam/Documents/PhD_Work/MCsim/MCsim/src']
+    # module.libpath = '/Users/Mhossam/Documents/PhD_Work/CacheSim_Stable/cachesim'
+    # module.lib = 'mcsim'
+
+    module_test = bld.create_ns3_module_test_library('MultiCoreSim')
+    module_test.source = [
+        ]
+
+    headers = bld(features='ns3header')
+    headers.module = 'MultiCoreSim'
+    headers.source = [
+    	'model/header/tinystr.h',
+    	'model/header/tinyxml.h',
+        'model/header/IdGenerator.h',
+        'model/header/CpuCoreGenerator.h',
+        'model/header/IFCohProtocol.h',
+        'model/header/SNOOPProtocolCommon.h',
+        'model/header/L1BusCnfgXml.h',
+    	'model/header/CacheXml.h',
+        'model/header/MemTemplate.h',
+    	'model/header/MCoreSimProject.h',
+    	'model/header/MCoreSimProjectXml.h',
+        'model/header/FSMReader.h',
+        'model/header/CacheController.h',
+        'model/header/CacheControllerExclusive.h',
+        'model/header/CacheController_End2End.h',
+        'model/header/FRFCFS_Buffer.h',
+        'model/header/CommunicationInterface.h',
+        'model/header/Logger.h',
+        'model/header/Protocols/Protocols.h',
+        'model/header/Protocols/CoherenceProtocolHandler.h',
+        'model/header/Protocols/MSIProtocol.h',
+        'model/header/Protocols/MESIProtocol.h',
+        'model/header/Protocols/MOESIProtocol.h',
+        'model/header/Protocols/PMSIProtocol.h',
+        'model/header/Protocols/PMESIProtocol.h',
+        'model/header/Protocols/PMSIAsteriskProtocol.h',
+        'model/header/Protocols/PMESIAsteriskProtocol.h',
+        'model/header/Protocols/LLCMSIProtocol.h',
+        'model/header/Protocols/LLCMESIProtocol.h',
+        'model/header/Protocols/LLCPMSIProtocol.h',
+        'model/header/Protocols/LLCPMESIProtocol.h',
+        'model/header/Interconnect/Bus.h',
+        'model/header/Interconnect/TripleBus.h',
+        'model/header/Interconnect/DirectInterconnect.h',
+        'model/header/Interconnect/BusInterface.h',
+        'model/header/Interconnect/TripleBusInterface.h',
+        'model/header/Interconnect/BusController.h',
+        'model/header/Interconnect/DirectController.h',
+        'model/header/Interconnect/SplitBusController.h',
+        'model/header/Interconnect/UnifiedBusController.h',
+        'model/header/Interconnect/Point2PointController.h',
+        'model/header/Interconnect/TripleBusController.h',
+        'model/header/Arbiters/Arbiter.h',
+        'model/header/Arbiters/TDMArbiter.h',
+        'model/header/Arbiters/FCFSArbiter.h',
+        'model/header/Arbiters/RRArbiter.h',
+        'model/header/Arbiters/RRFCFSArbiter.h',
+        'model/header/CacheDataHandler.h',
+        'model/header/GenericCacheLine.h',
+        'model/header/CacheDataHandler_COTS.h',
+        'model/header/MainMemoryController.h',
+        'model/header/MCsimInterface.h',
+        'model/header/ExternalCPU.h',
+        'model/header/CacheSim.h',
+        'model/header/ReplacementPolicies/Policy.h',
+        'model/header/ReplacementPolicies/ReplacementPolicy.h',
+        'model/header/ReplacementPolicies/Random.h',
+        'model/header/ReplacementPolicies/LeastRecentlyUsed.h',
+        
+        # 'model/header/MCsim/MCsim.h',
+        # 'model/header/MCsim/MCsimCallback.h',
+        ]
+    #headers.source = [headers.source, '/Users/Mhossam/Documents/PhD_Work/MCsim/MCsim/src']
+
+    if bld.env.ENABLE_EXAMPLES:
+        bld.recurse('examples')
+
+    # bld.ns3_python_bindings()
+

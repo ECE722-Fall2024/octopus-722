@@ -1,0 +1,10 @@
+prefix=/usr/local
+libdir=/usr/local/lib
+includedir=/usr/local/include/ns
+
+Name: libns3-MultiCoreSim
+Description: ns-3 module ns3-MultiCoreSim
+Version: 
+Libs: -L${libdir} -Wl,-Bdynamic -lns-MultiCoreSim-debug
+Cflags: -I${includedir}
+Requires: libns-core-debug
