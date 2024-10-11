@@ -318,13 +318,7 @@ void MCoreSimProject::setup4(MCoreSimProjectXml projectXmlCfg)
   list<CacheXml> xmlL2Caches = projectXmlCfg.GetL2Caches();
   list<CacheXml> xmlSharedCaches = projectXmlCfg.GetSharedCache();
 
-  vector <int> xmlSharedCacheIDs;
-  // iterate over each LLC xml 
-  for (list<CacheXml>::iterator it = xmlSharedCaches.begin(); it != xmlSharedCaches.end(); it++)
-  {
-    CacheXml SharedCacheXml = *it;
-    xmlSharedCacheIDs.push_back (it->GetCacheId());
-  }
+  
 
   char path_array[256];
   getcwd (path_array, sizeof(path_array));
